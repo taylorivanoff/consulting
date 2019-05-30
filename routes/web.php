@@ -38,7 +38,3 @@ Route::get('bespoke', function () {
 Route::apiResource('leads', 'LeadController');
 
 Route::post('auth/recaptcha', 'Auth\VerifyRecaptchaController');
-
-// Auth::routes();
-
-// Route::get('/home', 'HomeController@index')->name('home');

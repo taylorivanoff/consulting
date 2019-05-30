@@ -2,13 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
     <title>Portfolio Website Consulting, Implementation, Evaluation | Taylor Ivanoff Consulting</title>
-    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
+    <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    
     <script src="https://www.google.com/recaptcha/api.js?render=6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133486425-2"></script>
     <script>
@@ -48,7 +49,7 @@
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="">
+                            <a class="nav-link" href="/bespoke">
                                 <button type="submit" class="btn btn-danger text-uppercase badge-pill py-2 pl-3 pr-3">Apply For BeSpoke™</button>
                             </a>
                         </li>

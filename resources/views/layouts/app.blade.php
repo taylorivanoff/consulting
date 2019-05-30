@@ -9,7 +9,7 @@
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
-    
+
     <script src="https://www.google.com/recaptcha/api.js?render=6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb"></script>
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133486425-2"></script>
     <script>
@@ -29,7 +29,7 @@
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <!--<div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item mr-3">
                             <a class="nav-link" href="/consulting">Consulting</a>
@@ -54,7 +54,7 @@
                             </a>
                         </li>
                     </ul>
-                </div>
+                </div>-->
             </div>
         </nav>
 

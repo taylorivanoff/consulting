@@ -27,7 +27,7 @@
             </p>
         </div>
         <div class="col-lg-6 mt-md-2 mt-4">
-            <example-component></example-component>
+            <register-interest></register-interest>
         </div>
     </div>
 </div>  

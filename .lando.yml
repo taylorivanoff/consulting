@@ -1,4 +1,4 @@
-name: consulting
+name: taylorivanoff
 recipe: laravel
 config:
   webroot: public

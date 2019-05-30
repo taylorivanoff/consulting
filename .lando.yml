@@ -1,4 +1,4 @@
-name: test
+name: consulting
 recipe: laravel
 config:
   webroot: public

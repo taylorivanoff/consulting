@@ -19,9 +19,7 @@
                         'btn-danger': form.buttonStatus === 0,
                         'btn-success': form.buttonStatus === 1,
                     }"
-                >
-                    {{form.buttonText}}
-                </button>
+                >{{form.buttonText}}</button>
             </div>
         </div>
         <div class="input-group m-1" v-if="errors">
@@ -36,7 +34,6 @@
     export default {
         data () {
             return {
-                recaptchaSuccess: false,
                 errors: {},
                 form: {
                     email: '',
@@ -67,23 +64,12 @@
                         this.verify(token)
                     })
                     .then(() => {
-                        if (this.recaptchaSuccess) {
-                            this.store()
-                        } else {
-                            this.form.buttonText = "Recaptcha Failed"
-                            this.form.buttonStatus = 0
-                            this.clear()
-                        }
+                        this.store()
                     })
             },
             verify (token) {
                 axios.post('auth/recaptcha', {
                     token: token
-                })
-                .then(response => {
-                    if (response.data.success) {
-                        this.recaptchaSuccess = true
-                    }
                 })
             },
             store () {
@@ -105,7 +91,6 @@
                         if (error.response.status === 422) {
                             this.form.buttonText = "Already Registered"
                         }
-                        
                     }
                 })
             },

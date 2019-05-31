@@ -48,6 +48,11 @@ $navbar-toggler-font-size: 1rem;
 $navbar-toggler-padding-y: 0rem;
 $navbar-toggler-padding-x: 0rem;
 
+// ReCAPTCHA
+.grecaptcha-badge { 
+    visibility: hidden;
+}
+
 // Hero
 #hero {
     box-sizing: border-box;

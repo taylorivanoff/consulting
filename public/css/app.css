@@ -28,6 +28,10 @@
   font-style: normal;
 }
 
+.grecaptcha-badge {
+  visibility: hidden;
+}
+
 #hero {
   box-sizing: border-box;
   display: flex;

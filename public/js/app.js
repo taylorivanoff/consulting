@@ -1795,6 +1795,13 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -37431,11 +37438,30 @@ var render = function() {
             }),
             0
           )
-        : _vm._e()
+        : _vm._e(),
+      _vm._v(" "),
+      _vm._m(0)
     ]
   )
 }
-var staticRenderFns = []
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("small", { staticClass: "mt-2 text-secondary" }, [
+      _vm._v("This site is protected by reCAPTCHA and the Google \n        "),
+      _c("a", { attrs: { href: "https://policies.google.com/privacy" } }, [
+        _vm._v("Privacy Policy")
+      ]),
+      _vm._v(" and\n        "),
+      _c("a", { attrs: { href: "https://policies.google.com/terms" } }, [
+        _vm._v("Terms of Service")
+      ]),
+      _vm._v(" apply.\n    ")
+    ])
+  }
+]
 render._withStripped = true
 
 
@@ -51818,8 +51844,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/taylor/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/taylor/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

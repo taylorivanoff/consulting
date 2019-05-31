@@ -2,3 +2,11 @@ name: taylorivanoff
 recipe: laravel
 config:
   webroot: public
+proxy: 
+  admin:
+    - pma.taylorivanoff.lndo.site
+services:
+  admin:
+    type: phpmyadmin
+    hosts:
+      - database

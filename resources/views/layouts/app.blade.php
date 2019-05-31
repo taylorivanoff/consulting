@@ -21,47 +21,38 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light mb-md-5">
+        <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand text-lowercase mr-lg-5" style="line-height: 0.94;" href="/">Taylor<br> Ivanoff<br> Consulting</a>
 
-                <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                @auth
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav mr-auto">
-                        <li class="nav-item mr-3">
-                            <a class="nav-link" href="/consulting">Consulting</a>
-                        </li>   
-                        
-                        <li class="nav-item mr-3">
-                            <a class="nav-link" href="/our-story">Our Story</a>
-                        </li> 
-
-                        <li class="nav-item mr-3">
-                            <a class="nav-link" href="/blog">Blog</a>
-                        </li>
-
-                        <li class="nav-item mr-3">
-                            <a class="nav-link" href="/contact">Contact</a>
-                        </li> 
-                    </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
-                            <a class="nav-link" href="/bespoke">
-                                <button type="submit" class="btn btn-danger text-uppercase badge-pill py-2 pl-3 pr-3">Apply For BeSpoke™</button>
+                            <a class="nav-link" href="/admin/dashboard">
+                               Dashboard
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="/logout">
+                               Logout
                             </a>
                         </li>
                     </ul>
-                </div>-->
+                </div>
+                @endauth
             </div>
         </nav>
 
-        <main class="py-4">
+        <main>
             @yield('content')
         </main>
     </div>
+
     <script src="{{ asset('js/app.js') }}"></script>
 </body>
 </html>

@@ -35,6 +35,15 @@ Route::get('bespoke', function () {
     return view('coming-soon');
 });
 
-Route::apiResource('leads', 'LeadController');
-
 Route::post('auth/recaptcha', 'Auth\VerifyRecaptchaController');
+
+Route::apiResource('leads', 'LeadController')->only(['store']);
+
+Auth::routes(['register' => false]);
+
+Route::get('logout', function () {
+	Auth::logout();
+	return redirect('/');
+});
+
+Route::get('admin/dashboard', 'Admin\DashboardController');

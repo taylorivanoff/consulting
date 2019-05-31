@@ -23,7 +23,7 @@
     <div id="app">
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
-                <a class="navbar-brand text-lowercase mr-lg-5" style="line-height: 0.94;" href="/">Taylor<br> Ivanoff<br> Consulting</a>
+                <a class="navbar-brand text-lowercase mr-lg-5" style="line-height: 0.94;" href="/"><img src="{{asset('img/logo.png')}}" alt="" height="60"></a>
 
                 @auth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">

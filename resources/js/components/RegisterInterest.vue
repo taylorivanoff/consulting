@@ -26,11 +26,6 @@
         <div class="input-group m-1" v-if="errors">
             <p class="text-danger"v-for="error in errors">{{error[0]}}</p>
         </div>
-
-        <small class="mt-2 text-secondary" >This site is protected by reCAPTCHA and the Google 
-            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-        </small>
     </form>
 
 </template>

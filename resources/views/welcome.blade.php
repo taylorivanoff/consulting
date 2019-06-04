@@ -6,9 +6,9 @@
         <div class="row">
             <div class="col my-3">
                 <h1 class="display-4">
-                    I help architects develop<br>
-                    captivating portfolio websites to<br>
-                    attract profitable and befitting clientele.<br>
+                    I help architects upgrade <br>
+                    their portfolio website to  <br>
+                    engage more befitting clientele.
                 </h1>
             </div>
         </div>
@@ -16,7 +16,7 @@
         <div class="row">
             <div class="col-lg-9 my-2">
                 <p class="h2" style="font-family: 'SailecMedium';">
-                    Register your interest for the BeSpoke™ program to upgrade your  stagnant website and win up to 200% to 500% or more projects through a uniquely positioned portfolio-based website that successfully conveys the essence of your architectural vision.
+                    I've used the proven and guaranteed BeSpoke™ process to win 200% to 500% or more prospect engagement in 6 weeks for small-to-medium architectural firms.
                 </p>
             </div>
             <div class="col-lg-6 my-2">
@@ -25,5 +25,4 @@
         </div>
     </div>  
 </div>
-
 @endsection

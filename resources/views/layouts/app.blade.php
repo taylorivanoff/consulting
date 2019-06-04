@@ -51,6 +51,20 @@
         <main>
             @yield('content')
         </main>
+
+        <footer>
+            <div class="container">
+                <div class="row my-3">
+                    <div class="col">
+                        <small class="py-2">© {{ now()->year }} Taylor Ivanoff Consulting</small>
+                        <small class="py-2 text-secondary float-right">This site is protected by reCAPTCHA and the Google 
+                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
+                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
+                        </small>
+                    </div>
+                </div>
+            </div>
+        </footer>
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>

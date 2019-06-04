@@ -16,7 +16,9 @@
         <div class="row">
             <div class="col-lg-9 my-2">
                 <p class="h2" style="font-family: 'SailecMedium';">
-                    I've used the proven and guaranteed BeSpoke™ process to win 200% to 500% or more prospect engagement in 6 weeks for small-to-medium architectural firms.
+                    I've used the proven and guaranteed BeSpoke™ process to <br>
+                     win from 200% to 500% or more prospect engagement in <br>
+                     6 weeks for small-to-medium architectural firms.
                 </p>
             </div>
             <div class="col-lg-6 my-2">

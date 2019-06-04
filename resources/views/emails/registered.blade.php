@@ -1,8 +1,6 @@
 @component('mail::message')
-Thank you for registering your interest in the BeSpoke™ program.
-
-You'll be notified with more information about the program by the 14th of July.
-
-Kind regards,<br>
-Taylor Ivanoff
+<p>Thank you for registering your interest in BeSpoke™.</p>
+<p>You'll be notified shortly with more information.</p>
+<p>Kind regards,<br>
+Taylor Ivanoff</p>
 @endcomponent

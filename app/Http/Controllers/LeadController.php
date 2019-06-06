@@ -8,6 +8,7 @@ use App\Mail\InterestRegistered;
 use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Response;
 
 class LeadController extends Controller
 {
@@ -18,7 +19,27 @@ class LeadController extends Controller
      */
     public function index()
     {
-        //
+        $headers = array(
+            "Content-type" => "text/csv",
+            "Pragma" => "no-cache",
+            "Cache-Control" => "must-revalidate, post-check=0, pre-check=0",
+            "Expires" => "0"
+        );
+
+        $leads = Lead::latest()->get();
+        $columns = array('ID', 'Email', 'Created At');
+
+        $callback = function() use ($leads, $columns)
+        {
+            $file = fopen('php://output', 'w');
+            fputcsv($file, $columns);
+            foreach($leads as $lead) {
+                fputcsv($file, array($lead->id, $lead->email, $lead->created_at));
+            }
+            fclose($file);
+        };
+
+        return response()->streamDownload($callback, 'leads-' . date('d-m-Y-H:i:s') . '.csv', $headers);
     }
 
     /**
@@ -40,11 +61,8 @@ class LeadController extends Controller
     public function store(StoreLeadRequest $request)
     {
         $validated = $request->validated();
-
         $lead = Lead::create($validated);
-
         Mail::to($lead->email)->send(new InterestRegistered());
-
         return new LeadResource($lead);
     }
 
@@ -90,6 +108,8 @@ class LeadController extends Controller
      */
     public function destroy(Lead $lead)
     {
-        //
+        $lead->delete();
+
+        return redirect('/admin/dashboard');
     }
 }

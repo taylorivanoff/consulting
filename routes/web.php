@@ -37,12 +37,13 @@ Route::get('bespoke', function () {
 
 Route::post('auth/recaptcha', 'Auth\VerifyRecaptchaController');
 
-Route::apiResource('leads', 'LeadController')->only(['store']);
+Route::apiResource('leads', 'LeadController');
 
 Auth::routes(['register' => false]);
 
 Route::get('logout', function () {
 	Auth::logout();
+	
 	return redirect('/');
 });
 

@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
+use App\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
 {
+
+    const PAGINATION_SIZE = 10;
 
     public function __construct()
     {
@@ -20,9 +23,12 @@ class DashboardController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function __invoke(Request $request)
-    {
-        $leads = Lead::all();
+    {   
+        $data = [
+            'leads' => Lead::latest()->paginate(self::PAGINATION_SIZE),
+            'users' => User::latest()->paginate(self::PAGINATION_SIZE),
+        ];
 
-        return view('admin.dashboard', ['leads' => $leads]);
+        return view('admin.dashboard', ['data' => $data);
     }
 }

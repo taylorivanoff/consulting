@@ -9,7 +9,7 @@
     <meta property='og:title' content='Taylor Ivanoff Consulting'/>
     <meta property='og:image' content='{{ asset('img/dark.png') }}'/>
     <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
-    <meta property='og:url' content='{{ url() }}'/>
+    <meta property='og:url' content='https://taylorivanoff.com'/>
 
     <title>Portfolio Website Consulting, Implementation, Evaluation | Taylor Ivanoff Consulting</title>
 

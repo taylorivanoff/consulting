@@ -2,8 +2,14 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
+
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
+
+    <meta property='og:title' content='Taylor Ivanoff Consulting'/>
+    <meta property='og:image' content='{{ asset('img/dark.png') }}'/>
+    <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
+    <meta property='og:url' content='{{ url() }}'/>
 
     <title>Portfolio Website Consulting, Implementation, Evaluation | Taylor Ivanoff Consulting</title>
 

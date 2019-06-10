@@ -48,16 +48,16 @@
                             <li class="nav-item dropdown">
                                 <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                     @if(auth()->user()->name)
-                                    {{auth()->user()->name}}
+                                        {{auth()->user()->name}}
                                     @else
-                                    Account
+                                        Account
                                     @endisset
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                                     <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                                     @role('admin')
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
                                     @endrole
                                     <div class="dropdown-divider"></div>
                                     <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>

@@ -39,7 +39,7 @@
                 errors: {},
                 form: {
                     email: '',
-                    buttonText: "I'm Interested",
+                    buttonText: "Register",
                     buttonStatus: 0,
                 }
             }
@@ -91,7 +91,8 @@
                         this.clear()
 
                         if (error.response.status === 422) {
-                            this.form.buttonText = "Already Registered"
+                            this.form.buttonStatus = 1
+                            this.form.buttonText = "Registered!"
                         }
                     }
                 })
@@ -102,7 +103,7 @@
                     this.$v.$reset()
 
                     this.form.buttonStatus = 0
-                    this.form.buttonText = "I'm Interested"
+                    this.form.buttonText = "Register"
                 }, 5000);
             }
         }

@@ -7,7 +7,7 @@ use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InterestRegistered extends Mailable
+class EmailLogin extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -28,8 +28,8 @@ class InterestRegistered extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registered')
-        ->subject('Your interest has been registered.')
+        return $this->markdown('emails.email-login')
+        ->subject('Login via this email.')
         ->with(['url' => $this->url]);
     }
 }

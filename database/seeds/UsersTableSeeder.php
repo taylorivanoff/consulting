@@ -1,7 +1,9 @@
 <?php
 
-use App\User;
+use App\Models\User;
 use Illuminate\Database\Seeder;
+use Spatie\Permission\Models\Permission;
+use Spatie\Permission\Models\Role;
 
 class UsersTableSeeder extends Seeder
 {
@@ -14,8 +16,14 @@ class UsersTableSeeder extends Seeder
     {
         $admin = User::create([
             'name' => 'Taylor Ivanoff',
-            'email' => 'taylorivanoff@gmail.com',
-            'password' => Hash::make('8g48b8p8fR'),
+            'email' => 'hello@taylorivanoff.com',
         ]);
+
+        app()[\Spatie\Permission\PermissionRegistrar::class]->forgetCachedPermissions();
+
+        Role::create(['name' => 'admin']);
+        Role::create(['name' => 'user']);
+
+        $admin->assignRole('admin');
     }
 }

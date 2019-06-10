@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
 use App\Models\Lead;
-use App\User;
+use App\Models\User;
 use Illuminate\Http\Request;
 
 class DashboardController extends Controller
@@ -12,10 +12,6 @@ class DashboardController extends Controller
 
     const PAGINATION_SIZE = 10;
 
-    public function __construct()
-    {
-        $this->middleware('auth');
-    }
     /**
      * Handle the incoming request.
      *

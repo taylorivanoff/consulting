@@ -32,26 +32,47 @@
             <div class="container">
                 <a class="navbar-brand text-lowercase mr-lg-5" href="/"><img src="{{ asset('img/logo.png') }}" alt="Taylor Ivanoff Consulting" height="60"></a>
 
-                @auth
-                    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                        <span class="navbar-toggler-icon"></span>
-                    </button>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
 
-                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                        <ul class="navbar-nav ml-auto">
-                            <li class="nav-item">
-                                <a class="nav-link" href="/admin/dashboard">
-                                   Dashboard
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="/logout">
-                                   Logout
-                                </a>
-                            </li>
-                        </ul>
-                    </div>
-                @endauth
+                <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav ml-auto">
+                        @auth
+
+                        @role('admin')
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
+                               Admin
+                            </a>
+                        </li>
+                        @endrole
+
+                        @role('admin|user')
+                        <li class="nav-item">
+                            <a class="nav-link" href="">
+                               Account
+                            </a>
+                        </li>
+                        @endrole
+                        
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('auth.logout') }}">
+                               Logout
+                            </a>
+                        </li>
+                        @endauth
+
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('login') }}">
+                               Login
+                            </a>
+                        </li>
+                        @endguest
+
+                    </ul>
+                </div>
             </div>
         </nav>
 

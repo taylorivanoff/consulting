@@ -2,8 +2,14 @@
 
 namespace App\Http\Controllers\Auth;
 
+use App\Models\EmailLogin;
 use App\Http\Controllers\Controller;
+use App\Mail\EmailLogin as EmailLoginMail;
+use App\Models\User;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Mail;
+use Illuminate\Support\Facades\Request;
 
 class LoginController extends Controller
 {
@@ -25,7 +31,7 @@ class LoginController extends Controller
      *
      * @var string
      */
-    protected $redirectTo = '/admin/dashboard';
+    protected $redirectTo = '/';
 
     /**
      * Create a new controller instance.
@@ -35,5 +41,36 @@ class LoginController extends Controller
     public function __construct()
     {
         $this->middleware('guest')->except('logout');
+    }
+
+    public function login(Request $request)
+    {
+        // validate that this is a real email address
+        $validatedData = request()->validate([
+            'email' => 'required|string|email|exists:users|max:255',
+        ]);
+
+        $emailLogin = EmailLogin::createForEmail($validatedData['email']);
+
+        // send off a login email
+        $url = route('auth.email-authenticate', [
+            'token' => $emailLogin->token
+        ]);
+
+        Mail::to($emailLogin->email)->send(new EmailLoginMail($url));
+
+        // show the users a view saying "check your email"
+        return view('auth.email-login-sent');
+    }
+
+    public function authenticateEmail($token)
+    {
+        $emailLogin = EmailLogin::validFromToken($token);
+
+        $user = User::where('email', $emailLogin->email)->firstOrFail();
+
+        Auth::login($user);
+
+        return redirect()->route('home');
     }
 }

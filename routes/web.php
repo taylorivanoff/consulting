@@ -11,40 +11,28 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+Route::get('/', 'HomeController')->name('home');
 
-Route::get('consulting', function () {
-    return view('coming-soon');
-});
-
-Route::get('our-story', function () {
-    return view('coming-soon');
-});
-
-Route::get('blog', function () {
-    return view('coming-soon');
-});
-
-Route::get('contact', function () {
-    return view('coming-soon');
-});
-
-Route::get('bespoke', function () {
-    return view('coming-soon');
-});
-
-Route::post('auth/recaptcha', 'Auth\VerifyRecaptchaController');
-
+Route::apiResource('appointments', 'AppointmentController');
+Route::apiResource('bookings', 'BookingController');
 Route::apiResource('leads', 'LeadController');
+Route::apiResource('packages', 'PackageController');
 
-Auth::routes(['register' => false]);
-
-Route::get('logout', function () {
-	Auth::logout();
-	
-	return redirect('/');
+Auth::routes();
+Route::prefix('auth')->group(function () {
+	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
+	Route::get('logout', 'Auth\LogoutController')->name('auth.logout');
+	Route::get('email-authenticate/{token}', 'Auth\LoginController@authenticateEmail')->name('auth.email-authenticate');
 });
 
-Route::get('admin/dashboard', 'Admin\DashboardController');
+// Route::middleware(['auth', 'role:user'])->group(function () {
+// 	Route::prefix('user')->group(function () {
+// 		Route::get('dashboard', 'User\DashboardController');
+// 	});
+// });
+
+Route::middleware(['auth', 'role:admin'])->group(function () {
+	Route::prefix('admin')->group(function () {
+		Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
+	});
+});

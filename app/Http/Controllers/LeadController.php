@@ -5,7 +5,9 @@ namespace App\Http\Controllers;
 use App\Http\Requests\Models\Lead\StoreLeadRequest;
 use App\Http\Resources\LeadResource;
 use App\Mail\InterestRegistered;
+use App\Models\EmailLogin;
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\Facades\Response;
@@ -61,8 +63,18 @@ class LeadController extends Controller
     public function store(StoreLeadRequest $request)
     {
         $validated = $request->validated();
+
+        $user = User::create($validated);
         $lead = Lead::create($validated);
-        Mail::to($lead->email)->send(new InterestRegistered());
+        $emailLogin = EmailLogin::createForEmail($validated['email']);
+
+        // send off a login email
+        $url = route('auth.email-authenticate', [
+            'token' => $emailLogin->token
+        ]);
+        
+        Mail::to($lead->email)->send(new InterestRegistered($url));
+
         return new LeadResource($lead);
     }
 

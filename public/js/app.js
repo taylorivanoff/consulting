@@ -1718,7 +1718,7 @@ __webpack_require__.r(__webpack_exports__);
       errors: {},
       form: {
         email: '',
-        buttonText: "I'm Interested",
+        buttonText: "Register",
         buttonStatus: 0
       }
     };
@@ -1771,7 +1771,8 @@ __webpack_require__.r(__webpack_exports__);
           _this2.clear();
 
           if (error.response.status === 422) {
-            _this2.form.buttonText = "Already Registered";
+            _this2.form.buttonStatus = 1;
+            _this2.form.buttonText = "Registered!";
           }
         }
       });
@@ -1785,7 +1786,7 @@ __webpack_require__.r(__webpack_exports__);
         _this3.$v.$reset();
 
         _this3.form.buttonStatus = 0;
-        _this3.form.buttonText = "I'm Interested";
+        _this3.form.buttonText = "Register";
       }, 5000);
     }
   }
@@ -39770,8 +39771,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/taylor/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/taylor/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

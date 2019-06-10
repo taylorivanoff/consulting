@@ -29,6 +29,6 @@ class DashboardController extends Controller
             'users' => User::latest()->paginate(self::PAGINATION_SIZE),
         ];
 
-        return view('admin.dashboard', ['data' => $data);
+        return view('admin.dashboard', ['data' => $data]);
     }
 }

@@ -11,40 +11,34 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
+Route::get('/', 'HomeController')->name('home');
+
+Route::resource('contact', 'ContactController');
+Route::resource('appointments', 'AppointmentController');
+Route::resource('bookings', 'BookingController');
+Route::resource('leads', 'LeadController');
+Route::resource('packages', 'PackageController');
+
+Auth::routes();
+
+Route::prefix('auth')->group(function () {
+	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
+	Route::get('email-authenticate/{token}', 'Auth\LoginController@authenticateEmail')->name('auth.email-authenticate');
+
+	Route::middleware(['auth'])->group(function () {
+		Route::get('logout', 'Auth\LogoutController')->name('auth.logout');
+	});
 });
 
-Route::get('consulting', function () {
-    return view('coming-soon');
+Route::middleware(['auth', 'role:admin|user'])->group(function () {
+	Route::prefix('user')->group(function () {
+		Route::get('profile', 'Account\ProfileController')->name('user.profile');
+		Route::post('profile/update', 'Account\UpdateProfileController')->name('user.profile.update');
+	});
 });
 
-Route::get('our-story', function () {
-    return view('coming-soon');
+Route::middleware(['auth', 'role:admin'])->group(function () {
+	Route::prefix('admin')->group(function () {
+		Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
+	});
 });
-
-Route::get('blog', function () {
-    return view('coming-soon');
-});
-
-Route::get('contact', function () {
-    return view('coming-soon');
-});
-
-Route::get('bespoke', function () {
-    return view('coming-soon');
-});
-
-Route::post('auth/recaptcha', 'Auth\VerifyRecaptchaController');
-
-Route::apiResource('leads', 'LeadController');
-
-Auth::routes(['register' => false]);
-
-Route::get('logout', function () {
-	Auth::logout();
-	
-	return redirect('/');
-});
-
-Route::get('admin/dashboard', 'Admin\DashboardController');

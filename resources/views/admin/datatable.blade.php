@@ -38,7 +38,12 @@
             @foreach ($models as $model)
             <tr>
                 @foreach ($attributes as $attribute)
+                
+                @if ($attribute == 'message')
+                <td scope="row" style="word-wrap: break-word;min-width: 160px;max-width: 160px;">{{ $model->$attribute }}</td>
+                @else 
                 <td scope="row">{{ $model->$attribute }}</td>
+                @endif
                 @endforeach
 
                 <td>

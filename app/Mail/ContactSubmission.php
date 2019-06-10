@@ -2,12 +2,13 @@
 
 namespace App\Mail;
 
+use App\Models\Contact;
 use Illuminate\Bus\Queueable;
+use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-use Illuminate\Contracts\Queue\ShouldQueue;
 
-class InterestRegistered extends Mailable
+class ContactSubmission extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -16,9 +17,9 @@ class InterestRegistered extends Mailable
      *
      * @return void
      */
-    public function __construct($url)
+    public function __construct(Contact $contact)
     {
-        $this->url = $url;
+        $this->contact = $contact;
     }
 
     /**
@@ -28,8 +29,7 @@ class InterestRegistered extends Mailable
      */
     public function build()
     {
-        return $this->markdown('emails.registered')
-        ->subject('Your interest has been registered.')
-        ->with(['url' => $this->url]);
+        return $this->view('emails.contact')
+        ->with(['contact' => $this->contact]);
     }
 }

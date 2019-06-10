@@ -2,14 +2,14 @@
 
 @section('content')
 <div class="container">
-    <div class="col-lg-5 offset-lg-3 justify-content-center my-4">
+    <div class="col-lg-5 offset-lg-3 justify-content-center my-4 mb-5">
         <div class="card p-4">
             <h1>Login</h1>
 
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <div class="form-group">
+                <div class="form-group my-2">
                     <input id="email" type="email" class="form-control badge-pill px-2 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@company.com">
 
                     @error('email')
@@ -19,17 +19,7 @@
                     @enderror
                 </div>
 
-                <div class="form-group">
-                    <div class="form-check">
-                        <input class="form-check-input" type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
-
-                        <label class="form-check-label" for="remember">
-                            {{ __('Remember Me') }}
-                        </label>
-                    </div>
-                </div>
-
-                <div class="form-group text-right">
+                <div class="form-group my-3">
                     <button type="submit" class="btn btn-primary badge-pill px-3 ">
                         {{ __('Login') }}
                     </button>

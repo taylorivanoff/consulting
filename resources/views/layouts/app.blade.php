@@ -9,7 +9,7 @@
     <meta property='og:title' content='Taylor Ivanoff Consulting'/>
     <meta property='og:image' content='{{ asset('img/dark.png') }}'/>
     <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
-    <meta property='og:url' content='{{ url() }}'/>
+    <meta property='og:url' content='{{ route('home') }}'/>
 
     <title>Portfolio Website Consulting, Implementation, Evaluation | Taylor Ivanoff Consulting</title>
 
@@ -37,38 +37,42 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                    <ul class="navbar-nav mr-auto">
+                        <li class="nav-item mr-3">
+                            <a class="nav-link" href="/contact">Contact</a>
+                        </li> 
+                    </ul>
+                    
                     <ul class="navbar-nav ml-auto">
                         @auth
-
-                        @role('admin')
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('admin.dashboard') }}">
-                               Admin
-                            </a>
-                        </li>
-                        @endrole
-
-                        @role('admin|user')
-                        <li class="nav-item">
-                            <a class="nav-link" href="">
-                               Account
-                            </a>
-                        </li>
-                        @endrole
-                        
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('auth.logout') }}">
-                               Logout
-                            </a>
-                        </li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if(auth()->user()->name)
+                                    {{auth()->user()->name}}
+                                    @else
+                                    Account
+                                    @endisset
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                                    @role('admin')
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                                    @endrole
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
+                                </div>
+                            </li>
                         @endauth
 
                         @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">
-                               Login
-                            </a>
-                        </li>
+                            @unless (request()->is('login'))
+                                <li class="nav-item">
+                                    <a class="nav-link" href="{{ route('login') }}">
+                                       Login
+                                    </a>
+                                </li>
+                            @endunless
                         @endguest
 
                     </ul>

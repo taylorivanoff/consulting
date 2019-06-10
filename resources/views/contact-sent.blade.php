@@ -4,7 +4,8 @@
 <div class="container">
     <div class="row justify-content-center">
         <div class="col-md-8 my-4 text-center">
-            <h1>A login e-mail has been sent to you.</h1>
+            <h1>Your submission was successful.</h1>
+            <p>You will receive a response in 1 business day.</p>
         </div>
     </div>
 </div>

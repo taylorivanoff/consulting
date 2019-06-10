@@ -65,6 +65,8 @@ class LeadController extends Controller
         $validated = $request->validated();
 
         $user = User::create($validated);
+        $user->assignRole('user');
+
         $lead = Lead::create($validated);
         $emailLogin = EmailLogin::createForEmail($validated['email']);
 
@@ -122,6 +124,6 @@ class LeadController extends Controller
     {
         $lead->delete();
 
-        return redirect('/admin/dashboard');
+        return redirect()->route('admin.dashboard');
     }
 }

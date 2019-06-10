@@ -1710,7 +1710,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -1760,7 +1759,7 @@ __webpack_require__.r(__webpack_exports__);
         email: this.form.email
       }).then(function (response) {
         _this2.form.buttonStatus = 1;
-        _this2.form.buttonText = "Registered!";
+        _this2.form.buttonText = "Registered";
 
         _this2.clear();
       })["catch"](function (error) {
@@ -1772,7 +1771,7 @@ __webpack_require__.r(__webpack_exports__);
 
           if (error.response.status === 422) {
             _this2.form.buttonStatus = 1;
-            _this2.form.buttonText = "Registered!";
+            _this2.form.buttonText = "Registered";
           }
         }
       });
@@ -1787,7 +1786,7 @@ __webpack_require__.r(__webpack_exports__);
 
         _this3.form.buttonStatus = 0;
         _this3.form.buttonText = "Register";
-      }, 5000);
+      }, 7500);
     }
   }
 });

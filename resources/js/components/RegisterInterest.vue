@@ -27,7 +27,6 @@
             <p class="text-danger"v-for="error in errors">{{error[0]}}</p>
         </div>
     </form>
-
 </template>
 
 <script>
@@ -80,7 +79,7 @@
                 })
                 .then(response => {
                     this.form.buttonStatus = 1
-                    this.form.buttonText = "Registered!"
+                    this.form.buttonText = "Registered"
 
                     this.clear()
                 })
@@ -92,7 +91,7 @@
 
                         if (error.response.status === 422) {
                             this.form.buttonStatus = 1
-                            this.form.buttonText = "Registered!"
+                            this.form.buttonText = "Registered"
                         }
                     }
                 })
@@ -104,7 +103,7 @@
 
                     this.form.buttonStatus = 0
                     this.form.buttonText = "Register"
-                }, 5000);
+                }, 7500);
             }
         }
     }

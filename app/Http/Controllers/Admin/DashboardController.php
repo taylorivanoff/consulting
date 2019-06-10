@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Models\Contact;
 use App\Models\Lead;
 use App\Models\User;
 use Illuminate\Http\Request;
@@ -23,6 +24,7 @@ class DashboardController extends Controller
         $data = [
             'leads' => Lead::latest()->paginate(self::PAGINATION_SIZE),
             'users' => User::latest()->paginate(self::PAGINATION_SIZE),
+            'contacts' => Contact::latest()->paginate(self::PAGINATION_SIZE),
         ];
 
         return view('admin.dashboard', ['data' => $data]);

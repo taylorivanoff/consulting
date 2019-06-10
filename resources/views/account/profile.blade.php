@@ -4,7 +4,15 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-lg-6 offset-lg-3">
-            <h1>Your profile</h1>
+            <h1>
+                @if(auth()->user()->name)
+                    Hi {{auth()->user()->name}},
+                @else
+                    Hi,
+                @endisset
+            </h1>
+            <br>
+            <h2>Your profile</h2>
 
             <form method="POST" action="{{ route('user.profile.update') }}">
                 @csrf

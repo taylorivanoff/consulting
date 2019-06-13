@@ -14,10 +14,12 @@
 Route::get('/', 'HomeController')->name('home');
 
 Route::resource('contact', 'ContactController');
-Route::resource('appointments', 'AppointmentController');
-Route::resource('bookings', 'BookingController');
-Route::resource('leads', 'LeadController');
-Route::resource('packages', 'PackageController');
+
+Route::resource('leads', 'Account/LeadController');
+
+Route::resource('appointments', 'Booking/AppointmentController');
+Route::resource('bookings', 'Booking/BookingController');
+Route::resource('packages', 'Booking/PackageController');
 
 Auth::routes();
 

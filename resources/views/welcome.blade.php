@@ -71,9 +71,9 @@
             <div class="col-lg-5">
                 <h1>BeSpoke™ Program For Architects</h1>
                 <div class="py-2">
-                    <p>Join the premier program for architects to attract 200% to 500% or more befitting and qualified clientele in 6 weeks.</p>
+                    <p>Join the premier program for business owners to attract 200% to 500% or more befitting and qualified clientele for their studio in 6 weeks.</p>
                 
-                <p>This program is for studio and firm business owners that want to build or upgrade their digital portolio marketing to consistently attract ideal clientele and communicate the higher value creative differentiation for the work you do.</p>
+                    <p>This program is for architectural designers that want to refine their digital marketing and turbo-charge their online portolio to consistently attract ideal clientele and communicate your high-value creative differentiation in the projects you do.</p>
 
                 </div>
 

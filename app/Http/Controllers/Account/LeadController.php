@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controller\Lead;
 
 use App\Http\Requests\Models\Lead\StoreLeadRequest;
 use App\Http\Resources\LeadResource;

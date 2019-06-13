@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="container">
-    <div class="col-lg-5 offset-lg-3 justify-content-center my-4 mb-5">
+    <div class="col-lg-6 offset-lg-3 justify-content-center my-4 mb-5">
         <div class="card p-4">
             <h1>Login</h1>
 

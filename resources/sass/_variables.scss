@@ -65,3 +65,12 @@ $navbar-toggler-padding-x: 0rem;
 #hero #subtext {
     font-family: 'SailecMedium';
 }
+
+img {
+  filter: gray;
+  -webkit-filter: grayscale(1);
+}
+
+img:hover {
+  filter: none;
+}

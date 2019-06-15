@@ -94,6 +94,9 @@
                 })
                 
                 .then(response => {
+                    this.form.email = ''
+                    this.$v.$reset()
+
                     this.form.buttonStatus = 2
                     this.form.buttonText = 'Success'
 
@@ -115,9 +118,6 @@
             },
             clear () {
                 setTimeout(() =>  {
-                    this.$v.$reset()
-
-                    this.form.email = ''
                     this.form.buttonStatus = 0
                     this.form.buttonText = this.$props.title
                 }, 6000);

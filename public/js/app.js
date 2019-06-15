@@ -1772,6 +1772,10 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('leads', {
         email: this.form.email
       }).then(function (response) {
+        _this2.form.email = '';
+
+        _this2.$v.$reset();
+
         _this2.form.buttonStatus = 2;
         _this2.form.buttonText = 'Success';
         setTimeout(function () {
@@ -1795,9 +1799,6 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       setTimeout(function () {
-        _this3.$v.$reset();
-
-        _this3.form.email = '';
         _this3.form.buttonStatus = 0;
         _this3.form.buttonText = _this3.$props.title;
       }, 6000);

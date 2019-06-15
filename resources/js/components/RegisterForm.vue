@@ -18,13 +18,14 @@
             <div class="col pt-md-0 pt-2">
                 <div class="input-group">
                     <button 
-                            class="btn btn-dark text-uppercase badge-pill py-1 px-3"
+                            class="btn text-uppercase badge-pill py-1 px-3 w-75"
                             type="submit"
                             :class="{
                                 'btn-dark': form.buttonStatus === 0,
-                                'btn-success': form.buttonStatus === 1,
+                                'btn-success': form.buttonStatus === 2,
                             }"
-                        >{{title}}</button>
+                            :disabled="form.buttonStatus === 1"
+                        >{{ form.buttonText }}</button>
                 </div>
             </div>
         </div>
@@ -48,6 +49,7 @@
                 form: {
                     email: '',
                     buttonStatus: 0,
+                    buttonText: '',
                 }
             }
         },
@@ -58,6 +60,9 @@
                 }
             }
         },
+        mounted () {
+            this.form.buttonText = this.$props.title
+        },
         methods: {
             submit () {
                 this.$v.$touch()
@@ -65,6 +70,9 @@
                 if (this.$v.$invalid) {
                     return
                 }  
+
+                // submitting
+                this.form.buttonStatus = 1
 
                 this.$recaptcha(this.slugify(this.$props.title))
                     .then((token) => {
@@ -79,7 +87,6 @@
                 axios.post('auth/recaptcha', {
                     token: token
                 })
-
             },
             store () {
                 axios.post('leads', {
@@ -87,12 +94,17 @@
                 })
                 
                 .then(response => {
-                    this.form.buttonStatus = 1
+                    this.form.buttonStatus = 2
+                    this.form.buttonText = 'Success'
 
-                    this.clear()
+                    setTimeout(() =>  {
+                        this.form.buttonText = 'Check Your E-mail'
+                        this.clear()
+                    }, 3000);
                 })
                 .catch(error => {
                     if (error.response) {
+                        this.form.buttonText = 'Error'
                         this.clear()
 
                         if (error.response.status === 422) {
@@ -103,10 +115,12 @@
             },
             clear () {
                 setTimeout(() =>  {
-                    this.form.email = ''
                     this.$v.$reset()
+
+                    this.form.email = ''
                     this.form.buttonStatus = 0
-                }, 7500);
+                    this.form.buttonText = this.$props.title
+                }, 6000);
             },
             slugify(string) {
                 const a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;'

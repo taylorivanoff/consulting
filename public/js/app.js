@@ -1716,6 +1716,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -1726,7 +1727,8 @@ __webpack_require__.r(__webpack_exports__);
       errors: {},
       form: {
         email: '',
-        buttonStatus: 0
+        buttonStatus: 0,
+        buttonText: ''
       }
     };
   },
@@ -1738,6 +1740,9 @@ __webpack_require__.r(__webpack_exports__);
       }
     }
   },
+  mounted: function mounted() {
+    this.form.buttonText = this.$props.title;
+  },
   methods: {
     submit: function submit() {
       var _this = this;
@@ -1746,8 +1751,10 @@ __webpack_require__.r(__webpack_exports__);
 
       if (this.$v.$invalid) {
         return;
-      }
+      } // submitting
 
+
+      this.form.buttonStatus = 1;
       this.$recaptcha(this.slugify(this.$props.title)).then(function (token) {
         _this.verify(token);
       }).then(function () {
@@ -1765,11 +1772,17 @@ __webpack_require__.r(__webpack_exports__);
       axios.post('leads', {
         email: this.form.email
       }).then(function (response) {
-        _this2.form.buttonStatus = 1;
+        _this2.form.buttonStatus = 2;
+        _this2.form.buttonText = 'Success';
+        setTimeout(function () {
+          _this2.form.buttonText = 'Check Your E-mail';
 
-        _this2.clear();
+          _this2.clear();
+        }, 3000);
       })["catch"](function (error) {
         if (error.response) {
+          _this2.form.buttonText = 'Error';
+
           _this2.clear();
 
           if (error.response.status === 422) {
@@ -1782,12 +1795,12 @@ __webpack_require__.r(__webpack_exports__);
       var _this3 = this;
 
       setTimeout(function () {
-        _this3.form.email = '';
-
         _this3.$v.$reset();
 
+        _this3.form.email = '';
         _this3.form.buttonStatus = 0;
-      }, 7500);
+        _this3.form.buttonText = _this3.$props.title;
+      }, 6000);
     },
     slugify: function slugify(string) {
       var a = 'àáäâãåăæçèéëêǵḧìíïîḿńǹñòóöôœøṕŕßśșțùúüûǘẃẍÿź·/_,:;';
@@ -37343,14 +37356,14 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn btn-dark text-uppercase badge-pill py-1 px-3",
+                staticClass: "btn text-uppercase badge-pill py-1 px-3 w-75",
                 class: {
                   "btn-dark": _vm.form.buttonStatus === 0,
-                  "btn-success": _vm.form.buttonStatus === 1
+                  "btn-success": _vm.form.buttonStatus === 2
                 },
-                attrs: { type: "submit" }
+                attrs: { type: "submit", disabled: _vm.form.buttonStatus === 1 }
               },
-              [_vm._v(_vm._s(_vm.title))]
+              [_vm._v(_vm._s(_vm.form.buttonText))]
             )
           ])
         ])

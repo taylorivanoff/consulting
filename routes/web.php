@@ -15,32 +15,41 @@ Route::get('/', 'HomeController')->name('home');
 
 Route::resource('contact', 'ContactController');
 
-Route::resource('leads', 'Account/LeadController');
+Route::resource('leads', 'Account\LeadController');
 
-Route::resource('appointments', 'Booking/AppointmentController');
-Route::resource('bookings', 'Booking/BookingController');
-Route::resource('packages', 'Booking/PackageController');
+Route::resource('appointments', 'Booking\AppointmentController');
+Route::resource('bookings', 'Booking\BookingController');
+Route::resource('packages', 'Booking\PackageController');
 
 Auth::routes();
 
+// Route::multistep('bespoke/application', 'BeSpoke\ApplicationController')
+// 	->steps(3)
+// 	->name('bespoke.application');
+
 Route::prefix('auth')->group(function () {
-	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
 	Route::get('email-authenticate/{token}', 'Auth\LoginController@authenticateEmail')->name('auth.email-authenticate');
+
+	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
 
 	Route::middleware(['auth'])->group(function () {
 		Route::get('logout', 'Auth\LogoutController')->name('auth.logout');
 	});
 });
 
-Route::middleware(['auth', 'role:admin|user'])->group(function () {
+Route::middleware(['auth'])->group(function () {
 	Route::prefix('user')->group(function () {
 		Route::get('profile', 'Account\ProfileController')->name('user.profile');
+
 		Route::post('profile/update', 'Account\UpdateProfileController')->name('user.profile.update');
+
+	});
+
+	Route::middleware(['role:admin'])->group(function () {
+		Route::prefix('admin')->group(function () {
+			Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
+			
+		});
 	});
 });
 
-Route::middleware(['auth', 'role:admin'])->group(function () {
-	Route::prefix('admin')->group(function () {
-		Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
-	});
-});

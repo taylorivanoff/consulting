@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controller\Lead;
+namespace App\Http\Controllers\Account;
 
+use App\Http\Controllers\Controller;
 use App\Http\Requests\Models\Lead\StoreLeadRequest;
 use App\Http\Resources\LeadResource;
 use App\Mail\InterestRegistered;

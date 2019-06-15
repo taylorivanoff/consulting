@@ -11,8 +11,6 @@ const mix = require('laravel-mix');
  |
  */
 
-mix.browserSync('taylorivanoff.lndo.site');
-
 mix
 .sass('resources/sass/app.scss', 'public/css')
 .js('resources/js/app.js', 'public/js')

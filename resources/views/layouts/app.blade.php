@@ -2,7 +2,6 @@
 <html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
 <head>
     <meta charset="utf-8">
-
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1,user-scalable=0"/>
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
@@ -11,12 +10,14 @@
     <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
     <meta property='og:url' content='https://taylorivanoff.com'/>
 
-    <title>Portfolio Website Consulting, Implementation, Evaluation | Taylor Ivanoff Consulting</title>
+    <title>Portfolio Website Consulting, Evaluation, Implementation | Taylor Ivanoff Consulting</title>
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
+
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 
     <script src="https://www.google.com/recaptcha/api.js?render=6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb"></script>
+
     <script async src="https://www.googletagmanager.com/gtag/js?id=UA-133486425-2"></script>
     <script>
         window.dataLayer = window.dataLayer || [];
@@ -31,34 +32,41 @@
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand text-lowercase mr-lg-5" href="/"><img src="{{ asset('img/logo.png') }}" alt="Taylor Ivanoff Consulting" height="60"></a>
-                @auth
+
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(auth()->user()->name)
-                                    {{auth()->user()->name}}
-                                @else
-                                    Account
-                                @endisset
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                                @role('admin')
-                                    <div class="dropdown-divider"></div>
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
-                                @endrole
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
-                            </div>
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
                         </li>
+                        
+                        @auth
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                    @if(auth()->user()->name)
+                                        {{auth()->user()->name}}
+                                    @else
+                                        Account
+                                    @endisset
+                                </a>
+                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                                    @role('admin')
+                                        <div class="dropdown-divider"></div>
+                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                                    @endrole
+                                    <div class="dropdown-divider"></div>
+                                    <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
+                                </div>
+                            </li>
+                        @endauth
+
                     </ul>
                 </div>
-                @endauth
                 
             </div>
         </nav>
@@ -88,5 +96,6 @@
     <script src="{{ mix('js/manifest.js') }}"></script>
     <script src="{{ mix('js/vendor.js') }}"></script>
     <script src="{{ mix('js/app.js') }}"></script>
+
 </body>
 </html>

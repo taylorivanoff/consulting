@@ -18,7 +18,7 @@
             <div class="col pt-md-0 pt-2">
                 <div class="input-group">
                     <button 
-                            class="btn btn-dark text-uppercase font-weight-bold badge-pill py-1 px-3"
+                            class="btn btn-dark text-uppercase badge-pill py-1 px-3"
                             type="submit"
                             :class="{
                                 'btn-dark': form.buttonStatus === 0,

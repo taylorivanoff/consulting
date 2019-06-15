@@ -4,7 +4,7 @@
 <div class="container">
     <div class="row my-5">
         <div class="col-lg-6 offset-lg-3">
-            <h1>Contact me</h1>
+            <h1>Contact</h1>
 
             <form method="POST" action="{{ route('contact.store') }}">
                 @csrf

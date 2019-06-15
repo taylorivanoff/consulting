@@ -14,9 +14,7 @@
 Route::get('/', 'HomeController')->name('home');
 
 Route::resource('contact', 'ContactController');
-
 Route::resource('leads', 'Account\LeadController');
-
 Route::resource('appointments', 'Booking\AppointmentController');
 Route::resource('bookings', 'Booking\BookingController');
 Route::resource('packages', 'Booking\PackageController');
@@ -42,13 +40,11 @@ Route::middleware(['auth'])->group(function () {
 		Route::get('profile', 'Account\ProfileController')->name('user.profile');
 
 		Route::post('profile/update', 'Account\UpdateProfileController')->name('user.profile.update');
-
 	});
 
 	Route::middleware(['role:admin'])->group(function () {
 		Route::prefix('admin')->group(function () {
 			Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
-			
 		});
 	});
 });

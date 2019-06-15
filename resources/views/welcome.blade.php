@@ -16,14 +16,14 @@
 
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a
-                        href="{{route('contact.index')}}" 
+                        href="{{ route('contact.index') }}" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
                     >Contact Taylor To Find Out How</a>
                 </div>
             </div>
 
             <div class="offset-lg-1 col-lg-4 pt-3 text-center">
-                <img src="{{asset('img/headshot.jpeg')}}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
+                <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
                 <p class="h5">Taylor Ivanoff</p>
                 <p class="h6">Portfolio Website Consulting Expert</p>
             </div>
@@ -34,17 +34,17 @@
 <div class="bg-light py-1">
     <div class="container">
         <div class="row">
-            <div class="col text-center align-middle">
-                <img src="{{asset('img/canteen.png')}}" alt="CanTeen Company Logo" style="width:100px">
+            <div class="col text-center align-middle" style="padding-top: 5px;">
+                <img src="{{ asset('img/canteen.png') }}" alt="CanTeen Company Logo" style="width:100px">
             </div>
             <div class="col text-center align-middle p-3">
-                <img src="{{asset('img/ltrent.png')}}" alt="LTrent Driving School Company Logo" style="width:100px">
+                <img src="{{ asset('img/ltrent.png') }}" alt="LTrent Driving School Company Logo" style="width:100px">
             </div>
-            <div class="col text-center align-middle" style="padding-top: 42px;">
-                <img src="{{asset('img/iofabric.png')}}" alt="ioFABRIC Company Logo" style="width:100px">
+            <div class="col text-center align-middle" style="padding-top: 43px;">
+                <img src="{{ asset('img/iofabric.png') }}" alt="ioFABRIC Company Logo" style="width:100px">
             </div>
             <div class="col text-center align-middle p-3">
-                <img src="{{asset('img/odyssey.png')}}" alt="Odyssey Traveller Company Logo" style="width:100px">
+                <img src="{{ asset('img/odyssey.png') }}" alt="Odyssey Traveller Company Logo" style="width:100px">
             </div>
         </div>
     </div>

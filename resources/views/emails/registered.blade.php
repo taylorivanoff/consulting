@@ -1,26 +1,16 @@
 @component('mail::message')
 <p>
-Thank you for registering your interest in the breakthrough BeSpoke™ program.
+Thank you for registering your interest in our Portfolio Website Evaluation Guide.
 </p>
 
 <p>
-We'll use this e-mail to communicate further information to you about the process.
+We'll use this e-mail to communicate the guide to you as soon as possible.
 </p>
 
 <p>
- BeSpoke™ delivers phenomenal results in captivating new and qualified clientele by supercharging your existing digital portfolio in 6 weeks.
+✉️ You can reply directly to <a href="mailto:hello@taylorivanoff.com">this e-mail</a> with any questions you may have.
 </p>
-
-<p>
-Click below, and you'll be able to apply for a free consultation call to identify what the program can do for your business. Positions are limited.
-</p>
-
-@component('mail::button', [
-	'url' => $url,
-])
-Apply now
-@endcomponent
 
 <p>Kind regards,<br>
-Taylor Ivanoff</p>
+Taylor Ivanoff, Director</p>
 @endcomponent

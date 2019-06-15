@@ -37343,8 +37343,7 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass:
-                  "btn btn-dark text-uppercase font-weight-bold badge-pill py-1 px-3",
+                staticClass: "btn btn-dark text-uppercase badge-pill py-1 px-3",
                 class: {
                   "btn-dark": _vm.form.buttonStatus === 0,
                   "btn-success": _vm.form.buttonStatus === 1
@@ -39791,8 +39790,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/taylor/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/taylor/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

@@ -66,7 +66,7 @@ class LeadController extends Controller
         $validated = $request->validated();
 
         $lead = Lead::create($validated);
-        Mail::to($lead->email)->send(new InterestRegistered($url));
+        Mail::to($lead->email)->send(new InterestRegistered());
 
         return new LeadResource($lead);
     }

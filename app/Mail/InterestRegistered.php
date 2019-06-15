@@ -16,9 +16,8 @@ class InterestRegistered extends Mailable
      *
      * @return void
      */
-    public function __construct($url)
+    public function __construct()
     {
-        $this->url = $url;
     }
 
     /**
@@ -29,7 +28,6 @@ class InterestRegistered extends Mailable
     public function build()
     {
         return $this->markdown('emails.registered')
-        ->subject('Your interest has been registered.')
-        ->with(['url' => $this->url]);
+        ->subject('Your interest has been registered.');
     }
 }

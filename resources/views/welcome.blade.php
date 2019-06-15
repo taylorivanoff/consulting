@@ -57,21 +57,16 @@
         <div class="row">
             <div class="col-lg-5">
                 <h1>BeSpoke™ Program For Architects</h1>
+                
                 <div class="py-2">
                     <p>Join the premier program for business owners to attract 200% to 500% or more befitting and qualified clientele for their studio in 6 weeks.</p>
                 
                     <p>This program is for architectural designers that want to refine their digital marketing and turbo-charge their online portolio to consistently attract ideal clientele and communicate your high-value creative differentiation in the projects you do.</p>
-
-                </div>
-
-                
-                <div class="pt-4">
-                    <register-interest></register-interest>
                 </div>
             </div>
 
             <div class="offset-lg-1 col-lg-6 pt-lg-5">
-                <img src="{{asset('img/suburbs.svg')}}" class="w-100" alt="">
+                <img src="{{ asset('img/suburbs.svg' )}}" class="w-100" alt="Architectural Houses">
             </div>
         </div>
     </div>

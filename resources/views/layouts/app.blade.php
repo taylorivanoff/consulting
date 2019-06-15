@@ -41,7 +41,7 @@
                     <ul class="navbar-nav ml-auto">
 
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contact.index') }}">Contact</a>
+                            <a class="nav-link" href="{{ route('contacts.index') }}">Contact</a>
                         </li>
                         
                         @auth
@@ -54,12 +54,12 @@
                                     @endisset
                                 </a>
                                 <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                                     @role('admin')
-                                        <div class="dropdown-divider"></div>
                                         <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                                        <div class="dropdown-divider"></div>
                                     @endrole
-                                    <div class="dropdown-divider"></div>
+
+                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
                                     <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
                                 </div>
                             </li>

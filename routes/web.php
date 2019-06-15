@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-Route::resource('contact', 'ContactController');
+Route::resource('contacts', 'ContactController');
 Route::resource('leads', 'Account\LeadController');
 Route::resource('appointments', 'Booking\AppointmentController');
 Route::resource('bookings', 'Booking\BookingController');

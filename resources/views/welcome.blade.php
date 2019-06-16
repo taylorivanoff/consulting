@@ -16,7 +16,7 @@
 
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a
-                        href="{{ route('contacts.index') }}" 
+                        href="{{ route('contact.index') }}" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
                     >Contact Taylor To Find Out How</a>
                 </div>

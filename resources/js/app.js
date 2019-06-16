@@ -11,7 +11,7 @@ window.Vue = require('vue');
 import Vuelidate from 'vuelidate';
 Vue.use(Vuelidate);
 
-import { VueReCaptcha } from 'vue-recaptcha-v3'
+import { VueReCaptcha } from 'vue-recaptcha-v3';
 Vue.use(VueReCaptcha, { siteKey: '6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb' });
 
 /**
@@ -25,7 +25,7 @@ Vue.use(VueReCaptcha, { siteKey: '6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb' });
 const files = require.context('./', true, /\.vue$/i);
 files.keys().map(key => Vue.component(key.split('/').pop().split('.')[0], files(key).default));
 
-Vue.config.productionTip = false
+Vue.config.productionTip = false;
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

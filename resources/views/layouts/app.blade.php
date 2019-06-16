@@ -32,41 +32,36 @@
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand text-lowercase mr-lg-5" href="/"><img src="{{ asset('img/logo.png') }}" alt="Taylor Ivanoff Consulting" height="60"></a>
-
+                
+                @auth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav ml-auto">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                @if(auth()->user()->name)
+                                    {{auth()->user()->name}}
+                                @else
+                                    Account
+                                @endisset
+                            </a>
+                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                @role('admin')
+                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
+                                    <div class="dropdown-divider"></div>
+                                @endrole
 
-                        <li class="nav-item">
-                            <a class="nav-link" href="{{ route('contacts.index') }}">Contact</a>
+                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
+                                <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
+                            </div>
                         </li>
-                        
-                        @auth
-                            <li class="nav-item dropdown">
-                                <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                    @if(auth()->user()->name)
-                                        {{auth()->user()->name}}
-                                    @else
-                                        Account
-                                    @endisset
-                                </a>
-                                <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                    @role('admin')
-                                        <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
-                                        <div class="dropdown-divider"></div>
-                                    @endrole
-
-                                    <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                                    <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
-                                </div>
-                            </li>
-                        @endauth
-
                     </ul>
                 </div>
+                @endauth
+                
                 
             </div>
         </nav>

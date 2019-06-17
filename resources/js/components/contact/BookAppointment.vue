@@ -3,16 +3,16 @@
 		<div class="col" v-for="day in days">
 			<p>{{ day.name }}</p>
 			<p>{{ day.date }}</p>
-			<div class="row" v-for="hour in day.hours">
+			<div class="row" v-for="slot in day.slots">
 				<button
 					class="btn w-100 m-1"
 					:class="{
-						'btn-success': hour.is_available,
-						'btn-muted': !hour.is_available
+						'btn-success': slot.is_available,
+						'btn-muted': !slot.is_available
 					}"
-					:disabled="!hour.is_available"
+					:disabled="!slot.is_available"
 				>
-					{{ hour.time }}
+					{{ slot.time }}
 				</button>
 			</div>
 		</div>

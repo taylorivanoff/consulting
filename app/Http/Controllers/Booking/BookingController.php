@@ -10,6 +10,13 @@ use Illuminate\Support\Collection;
 
 class BookingController extends Controller
 {
+
+    const MAX_DAYS = 5;
+    const START_TIME = 10;
+    const HOURS_PER_DAY = 8;
+    const SLOTS_PER_HOUR = 2;
+    const MINUTE_INTERVAL = 30;
+
     /**
      * Display a listing of the resource.
      *
@@ -17,60 +24,57 @@ class BookingController extends Controller
      */
     public function index()
     {
-        // return available booking times that are able to be booked
+        $bookings = Booking::all();
 
         $days = new Collection;
+
         $date = Carbon::now()->startOfDay();
 
-        for ($day = 0; $day < 5; $day++) {
+        for ($day = 0; $day < self::MAX_DAYS; $day++) {
             $date->add(1, 'day');
+
+            $date->hour = self::START_TIME;
+
+            $slots = new Collection;
+            for ($slot = 0; $slot <= (self::HOURS_PER_DAY * self::SLOTS_PER_HOUR); $slot++) {
+                if ($slot !== 0) {
+                    $date->addMinutes(self::MINUTE_INTERVAL);
+                }
+
+                $time = $date->format('h:i A');
+                $availability = false;
+
+                foreach ($bookings as $booking) {
+                    $bookingTime = Carbon::parse($booking->time);
+
+                    if ($bookingTime->eq($date)) {
+                        $time = $bookingTime->format('h:i A');
+                        $availability = true;
+                    } 
+                }
+
+                $slots->push([
+                    'time' => $time,
+                    'is_available' => $availability
+                ]);
+
+            }
 
             if ($date->isoWeekday() === 6) {
                 $date->add(2, 'day');
-            }
-
-            if ($date->isoWeekday() === 7) {
+            } else if ($date->isoWeekday() === 7) {
                 $date->add(1, 'day');
             }   
-            
-            $hours = new Collection;
-            for ($hour = 10; $hour <= 18; $hour++) {
-                $date->hour = $hour;
-
-                $hours->push([
-                    'time' => $date->format('h:i A'),
-                    'is_available' => false
-                ]);
-            }
 
             $days->push([
                 'name' => $date->format("D"),
                 'date' => $date->format("d/m/y"),
-                'hours' => $hours
+                'slots' => $slots
             ]);
-        }
-
-        $bookings = Booking::all();
-        $times = new Collection;
-
-        foreach ($bookings as $booking) {
-            $date = Carbon::parse($booking->time);
-
-            $hours = new Collection;
-            $hours->push([
-                'time' => $date->format('h:i A'),
-                'is_available' => true
-            ]);
-
-            $times->push([
-                'name' => $date->format("D"),
-                'date' => $date->format("d/m/y"),
-                'hours' => $hours
-            ]);    
         }
 
         return response()->json(
-            $times->merge($days)
+            $days
         );
     }
 

@@ -66621,19 +66621,19 @@ var render = function() {
           _vm._v(" "),
           _c("p", [_vm._v(_vm._s(day.date))]),
           _vm._v(" "),
-          _vm._l(day.hours, function(hour) {
+          _vm._l(day.slots, function(slot) {
             return _c("div", { staticClass: "row" }, [
               _c(
                 "button",
                 {
                   staticClass: "btn w-100 m-1",
                   class: {
-                    "btn-success": hour.is_available,
-                    "btn-muted": !hour.is_available
+                    "btn-success": slot.is_available,
+                    "btn-muted": !slot.is_available
                   },
-                  attrs: { disabled: !hour.is_available }
+                  attrs: { disabled: !slot.is_available }
                 },
-                [_vm._v("\n\t\t\t\t" + _vm._s(hour.time) + "\n\t\t\t")]
+                [_vm._v("\n\t\t\t\t" + _vm._s(slot.time) + "\n\t\t\t")]
               )
             ])
           })
@@ -69222,8 +69222,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/taylor/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/taylor/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

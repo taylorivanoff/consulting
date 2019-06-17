@@ -12598,45 +12598,47 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   mounted: function mounted() {
-    // get all times from next 5 days including today
-    this.addTimes(); //
+    var _this = this;
+
+    axios.get('bookings').then(function (response) {
+      _this.days = response.data;
+    })["catch"](function (error) {
+      if (error.response) {
+        console.error(error.response.data);
+      }
+    }); // get all times from next 5 days including today
+    // this.addTimes();
+    //
   },
-  methods: {
-    addWeekdays: function addWeekdays(date, days) {
-      date = moment__WEBPACK_IMPORTED_MODULE_0___default()(date); // use a clone
-
-      while (days > 0) {
-        date = date.add(1, "days"); // decrease "days" only if it's a weekday.
-
-        if (date.isoWeekday() !== 6 && date.isoWeekday() !== 7) {
-          days -= 1;
-        }
-      }
-
-      return date;
-    },
-    addTimes: function addTimes() {
-      for (var day = 0; day < 5; day++) {
-        var date = moment__WEBPACK_IMPORTED_MODULE_0___default()().add();
-        date = this.addWeekdays(date, day);
-        this.days.push({
-          name: date.format("dddd"),
-          date: date.format("D/M/YY"),
-          hours: this.addHours()
-        });
-      }
-    },
-    addHours: function addHours() {
-      var hours = [];
-
-      for (var hour = 10; hour < 19; hour++) {
-        hours.push(moment__WEBPACK_IMPORTED_MODULE_0___default()({
-          hour: hour
-        }).format("h:mm A"));
-      }
-
-      return hours;
-    }
+  methods: {// addWeekdays(date, days) {
+    // 	date = moment(date); // use a clone
+    // 	while (days > 0) {
+    // 		date = date.add(1, "days");
+    // 		// decrease "days" only if it's a weekday.
+    // 		if (date.isoWeekday() !== 6 && date.isoWeekday() !== 7) {
+    // 			days -= 1;
+    // 		}
+    // 	}
+    // 	return date;
+    // },
+    // addTimes() {
+    // 	for (let day = 0; day < 5; day++) {
+    // 		let date = moment().add()
+    // 		date = this.addWeekdays(date, day)
+    // 		this.days.push({
+    // 			name: date.format("dddd"),
+    // 			date: date.format("D/M/YY"),
+    // 			hours: this.addHours()
+    // 		});
+    // 	}
+    // },
+    // addHours() {
+    // 	let hours = [];
+    // 	for (let hour = 10; hour < 19; hour++) {
+    // 		hours.push(moment({ hour }).format("h:mm A"));
+    // 	}
+    // 	return hours;
+    // }
   }
 });
 
@@ -66626,12 +66628,12 @@ var render = function() {
                 {
                   staticClass: "btn w-100 m-1",
                   class: {
-                    // 'btn-success': true,
-                    "btn-muted": true
+                    "btn-success": hour.is_available,
+                    "btn-muted": !hour.is_available
                   },
-                  attrs: { disabled: true }
+                  attrs: { disabled: !hour.is_available }
                 },
-                [_vm._v("\n\t\t\t\t" + _vm._s(hour) + "\n\t\t\t")]
+                [_vm._v("\n\t\t\t\t" + _vm._s(hour.time) + "\n\t\t\t")]
               )
             ])
           })
@@ -69220,8 +69222,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /Users/taylorivanoff/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /Users/taylor/Sites/consulting/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /Users/taylor/Sites/consulting/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

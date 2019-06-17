@@ -2,8 +2,11 @@
 
 namespace App\Http\Controllers\Booking;
 
+use App\Http\Controllers\Controller as Controller;
 use App\Models\Booking;
 use Illuminate\Http\Request;
+use Illuminate\Support\Carbon;
+use Illuminate\Support\Collection;
 
 class BookingController extends Controller
 {
@@ -14,8 +17,61 @@ class BookingController extends Controller
      */
     public function index()
     {
+        // return available booking times that are able to be booked
+
+        $days = new Collection;
+        $date = Carbon::now()->startOfDay();
+
+        for ($day = 0; $day < 5; $day++) {
+            $date->add(1, 'day');
+
+            if ($date->isoWeekday() === 6) {
+                $date->add(2, 'day');
+            }
+
+            if ($date->isoWeekday() === 7) {
+                $date->add(1, 'day');
+            }   
+            
+            $hours = new Collection;
+            for ($hour = 10; $hour <= 18; $hour++) {
+                $date->hour = $hour;
+
+                $hours->push([
+                    'time' => $date->format('h:i A'),
+                    'is_available' => false
+                ]);
+            }
+
+            $days->push([
+                'name' => $date->format("D"),
+                'date' => $date->format("d/m/y"),
+                'hours' => $hours
+            ]);
+        }
+
         $bookings = Booking::all();
-        // return $bookings;
+        $times = new Collection;
+
+        foreach ($bookings as $booking) {
+            $date = Carbon::parse($booking->time);
+
+            $hours = new Collection;
+            $hours->push([
+                'time' => $date->format('h:i A'),
+                'is_available' => true
+            ]);
+
+            $times->push([
+                'name' => $date->format("D"),
+                'date' => $date->format("d/m/y"),
+                'hours' => $hours
+            ]);    
+        }
+
+        return response()->json(
+            $times->merge($days)
+        );
     }
 
     /**

@@ -7,12 +7,12 @@
 				<button
 					class="btn w-100 m-1"
 					:class="{
-						// 'btn-success': true,
-						'btn-muted': true
+						'btn-success': hour.is_available,
+						'btn-muted': !hour.is_available
 					}"
-					:disabled="true"
+					:disabled="!hour.is_available"
 				>
-					{{ hour }}
+					{{ hour.time }}
 				</button>
 			</div>
 		</div>
@@ -23,47 +23,60 @@
 import moment from "moment";
 
 export default {
-	data() {
+	data () {
 		return {
 			days: []
 		};
 	},
 	mounted() {
+		axios.get('bookings')
+            .then(response => {
+            	this.days = response.data
+            })
+            .catch(error => {
+                if (error.response) {
+                	console.error(error.response.data)
+                }
+            })
+
+
+
+
 		// get all times from next 5 days including today
-		this.addTimes();
+		// this.addTimes();
 
 		//
 	},
 	methods: {
-		addWeekdays(date, days) {
-			date = moment(date); // use a clone
-			while (days > 0) {
-				date = date.add(1, "days");
-				// decrease "days" only if it's a weekday.
-				if (date.isoWeekday() !== 6 && date.isoWeekday() !== 7) {
-					days -= 1;
-				}
-			}
-			return date;
-		},
-		addTimes() {
-			for (let day = 0; day < 5; day++) {
-				let date = moment().add()
-				date = this.addWeekdays(date, day)
-				this.days.push({
-					name: date.format("dddd"),
-					date: date.format("D/M/YY"),
-					hours: this.addHours()
-				});
-			}
-		},
-		addHours() {
-			let hours = [];
-			for (let hour = 10; hour < 19; hour++) {
-				hours.push(moment({ hour }).format("h:mm A"));
-			}
-			return hours;
-		}
+		// addWeekdays(date, days) {
+		// 	date = moment(date); // use a clone
+		// 	while (days > 0) {
+		// 		date = date.add(1, "days");
+		// 		// decrease "days" only if it's a weekday.
+		// 		if (date.isoWeekday() !== 6 && date.isoWeekday() !== 7) {
+		// 			days -= 1;
+		// 		}
+		// 	}
+		// 	return date;
+		// },
+		// addTimes() {
+		// 	for (let day = 0; day < 5; day++) {
+		// 		let date = moment().add()
+		// 		date = this.addWeekdays(date, day)
+		// 		this.days.push({
+		// 			name: date.format("dddd"),
+		// 			date: date.format("D/M/YY"),
+		// 			hours: this.addHours()
+		// 		});
+		// 	}
+		// },
+		// addHours() {
+		// 	let hours = [];
+		// 	for (let hour = 10; hour < 19; hour++) {
+		// 		hours.push(moment({ hour }).format("h:mm A"));
+		// 	}
+		// 	return hours;
+		// }
 	}
 };
 </script>

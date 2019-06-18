@@ -1,21 +1,22 @@
 <?php
 
-namespace App\Http\Controllers\Booking;
+namespace App\Http\Controllers;
 
-use App\Http\Controllers\Controller as Controller;
+use App\Http\Requests\StoreAppointmentRequest;
+use App\Http\Requests\StoreBookingRequest;
+use App\Models\Appointment;
 use App\Models\Booking;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
 
-class BookingController extends Controller
+class AppointmentController extends Controller
 {
 
     const MAX_DAYS = 5;
     const START_TIME = 10;
     const HOURS_PER_DAY = 8;
-    const SLOTS_PER_HOUR = 2;
-    const MINUTE_INTERVAL = 30;
+    const MINUTE_INTERVAL = 60;
 
     /**
      * Display a listing of the resource.
@@ -29,45 +30,53 @@ class BookingController extends Controller
         $days = new Collection;
 
         $date = Carbon::now()->startOfDay();
-
+        $current = Carbon::now();
         for ($day = 0; $day < self::MAX_DAYS; $day++) {
-            $date->add(1, 'day');
+            if ($day !== 0) {
+                $date->add(1, 'day');
+            }
 
             $date->hour = self::START_TIME;
 
             $slots = new Collection;
-            for ($slot = 0; $slot <= (self::HOURS_PER_DAY * self::SLOTS_PER_HOUR); $slot++) {
+            for ($slot = 0; $slot <= (self::HOURS_PER_DAY * (60 / self::MINUTE_INTERVAL)); $slot++) {
                 if ($slot !== 0) {
                     $date->addMinutes(self::MINUTE_INTERVAL);
                 }
 
                 $time = $date->format('h:i A');
                 $availability = false;
+                $id = null;
 
                 foreach ($bookings as $booking) {
                     $bookingTime = Carbon::parse($booking->time);
-
+                    
                     if ($bookingTime->eq($date)) {
-                        $time = $bookingTime->format('h:i A');
-                        $availability = true;
-                    } 
+                        if ($bookingTime->gt($current)) {
+                            $time = $bookingTime->format('h:i A');
+                            $id = $booking->id;
+                            $availability = true;
+                        }
+                    }
                 }
 
                 $slots->push([
+                    'id' => $id,
                     'time' => $time,
-                    'is_available' => $availability
+                    'is_available' => $availability,
                 ]);
-
             }
 
             if ($date->isoWeekday() === 6) {
                 $date->add(2, 'day');
-            } else if ($date->isoWeekday() === 7) {
+            }
+
+            if ($date->isoWeekday() === 7) {
                 $date->add(1, 'day');
             }   
 
             $days->push([
-                'name' => $date->format("D"),
+                'name' => $date->format("l"),
                 'date' => $date->format("d/m/y"),
                 'slots' => $slots
             ]);
@@ -85,7 +94,7 @@ class BookingController extends Controller
      */
     public function create()
     {
-        //
+        
     }
 
     /**
@@ -94,18 +103,29 @@ class BookingController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreAppointmentRequest $request)
     {
-        //
+        $validated = $request->validated();
+
+        $booking = Booking::find($validated['booking'])->firstOrFail();
+
+        $appointment = Appointment::create([
+            'name' => $validated['name'],
+            'email' => $validated['email'],
+            'phone' => $validated['phone'],
+            'time' => $booking->time,
+        ]);
+
+        $booking->delete();
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function show(Booking $booking)
+    public function show(Appointment $appointment)
     {
         //
     }
@@ -113,10 +133,10 @@ class BookingController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function edit(Booking $booking)
+    public function edit(Appointment $appointment)
     {
         //
     }
@@ -125,10 +145,10 @@ class BookingController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Booking  $booking
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, Booking $booking)
+    public function update(Request $request, Appointment $appointment)
     {
         //
     }
@@ -136,10 +156,10 @@ class BookingController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Models\Booking  $booking
+     * @param  \App\Models\Appointment  $appointment
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Booking $booking)
+    public function destroy(Appointment $appointment)
     {
         //
     }

@@ -4,12 +4,10 @@
 <div class="container">
     <div class="col-lg-6 offset-lg-3 justify-content-center my-4 mb-5">
         <div class="card p-4">
-            <h1>Login</h1>
-
             <form method="POST" action="{{ route('login') }}">
                 @csrf
 
-                <div class="form-group my-2">
+                <div class="form-group my-1">
                     <input id="email" type="email" class="form-control badge-pill px-2 @error('email') is-invalid @enderror" name="email" value="{{ old('email') }}" required autocomplete="email" autofocus placeholder="name@company.com">
 
                     @error('email')
@@ -19,8 +17,8 @@
                     @enderror
                 </div>
 
-                <div class="form-group my-3">
-                    <button type="submit" class="btn btn-primary badge-pill px-3 ">
+                <div class="form-group mt-2">
+                    <button type="submit" class="btn btn-primary float-right badge-pill px-3 ">
                         {{ __('Login') }}
                     </button>
                 </div>

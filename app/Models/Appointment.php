@@ -8,11 +8,10 @@ use Illuminate\Database\Eloquent\Model;
 
 class Appointment extends Model
 {
-	public function user() {
-    	return $this->hasOne(User::class);
-    }
-
-    public function package() {
-    	return $this->hasOne(Package::class);
-    }
+	protected $fillable = [
+		'name',
+		'email',
+		'phone',
+		'time'
+	];
 }

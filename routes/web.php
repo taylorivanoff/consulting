@@ -13,12 +13,10 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-Route::resource('contact', 'ContactController');
-
-Route::resource('leads', 'Account\LeadController');
-Route::resource('appointments', 'Booking\AppointmentController');
-Route::resource('bookings', 'Booking\BookingController');
-Route::resource('packages', 'Booking\PackageController');
+Route::resource('contact',      'ContactController');
+Route::resource('leads',        'LeadController');
+Route::resource('appointments', 'AppointmentController');
+Route::resource('bookings',     'BookingController');
 
 Auth::routes();
 
@@ -27,6 +25,7 @@ Auth::routes();
 // 	->name('bespoke.application');
 
 Route::prefix('auth')->group(function () {
+
 	Route::get('email-authenticate/{token}', 'Auth\LoginController@authenticateEmail')->name('auth.email-authenticate');
 
 	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
@@ -34,19 +33,24 @@ Route::prefix('auth')->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::get('logout', 'Auth\LogoutController')->name('auth.logout');
 	});
+
 });
 
 Route::middleware(['auth'])->group(function () {
+
 	Route::prefix('user')->group(function () {
 		Route::get('profile', 'Account\ProfileController')->name('user.profile');
-
 		Route::post('profile/update', 'Account\UpdateProfileController')->name('user.profile.update');
 	});
 
 	Route::middleware(['role:admin'])->group(function () {
 		Route::prefix('admin')->group(function () {
+
 			Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
+			Route::get('availability', 'Admin\AvailabilityController')->name('admin.availability');
+			
 		});
 	});
+
 });
 

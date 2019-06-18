@@ -3,6 +3,8 @@
 @section('content')
 <div class="container">
 
+	<a href="{{ route('admin.availability') }}">Availability</a>
+
     @foreach ($data as $models)
         @includeWhen(count($models), 'admin.datatable', [
             'models' => $models,

@@ -5,19 +5,19 @@
 <div id="hero" class="py-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 my-2">
+            <div class="col-lg-9 my-4">
                 <h1 class="display-4">I help architects upgrade their portfolio websites to  win more projects.</h1>
             </div>
         </div>
 
         <div class="row">
             <div class="col-lg-7">
-                <p class="h2 my-4" id="subtext">I've used the guaranteed BeSpoke™ process to help architectural studios grow their business by attracting 200% to 500% or more befitting and qualified clientele in 6 weeks.</p>
+                <p class="h2 my-" id="subtext">I've used the proven and guaranteed BeSpoke™ process to help architectural firms grow their revenue by engaging 200% to 500% or more befitting and qualified clientele in 6 weeks.</p>
 
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a
                         href="{{ route('contact.index') }}" 
-                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
+                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-2"
                     >Contact Taylor To Find Out How</a>
                 </div>
             </div>
@@ -52,23 +52,4 @@
 
 @include('components.download-guide')
 
-<div class="py-5">
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-5">
-                <h1>BeSpoke™ Program For Architects</h1>
-                
-                <div class="py-2">
-                    <p>Join the premier program for business owners to attract 200% to 500% or more befitting and qualified clientele for their studio in 6 weeks.</p>
-                
-                    <p>This program is for architectural designers that want to refine their digital marketing and turbo-charge their online portolio to consistently attract ideal clientele and communicate your high-value creative differentiation in the projects you do.</p>
-                </div>
-            </div>
-
-            <div class="offset-lg-1 col-lg-6 pt-lg-5">
-                <img src="{{ asset('img/suburbs.svg' )}}" class="w-100" alt="Architectural Houses">
-            </div>
-        </div>
-    </div>
-</div>
 @endsection

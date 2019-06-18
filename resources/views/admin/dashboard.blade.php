@@ -5,6 +5,8 @@
 
 	<a href="{{ route('admin.availability') }}">Availability</a>
 
+	<appointments></appointments>
+
     @foreach ($data as $models)
         @includeWhen(count($models), 'admin.datatable', [
             'models' => $models,

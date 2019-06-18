@@ -66,6 +66,7 @@ $navbar-toggler-padding-x: 0rem;
     font-family: 'SailecMedium';
 }
 
+// Images
 img {
   filter: gray;
   -webkit-filter: grayscale(1);
@@ -75,6 +76,12 @@ img:hover {
   filter: none;
 }
 
-.text-strikethrough {
+
+// Buttons
+#contact button[disabled] {
+    text-decoration: line-through;
+}
+
+#contact button[disabled]:hover {
     text-decoration: line-through;
 }

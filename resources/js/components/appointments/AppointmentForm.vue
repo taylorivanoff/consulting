@@ -62,15 +62,16 @@
 				<div class="col-lg-6">
 					<p>blah</p>
 				</div>
+
+				<div class="col-lg-12 py-3">
+					<h6>Select a time slot below to schedule a call.</h6>
+					<appointment-table @appointmentClicked="set"></appointment-table>
+				</div>
 			</div>
 
-			<div class="col-lg-12 py-3">
-				<h6 class="py-1">Select a time slot below to schedule a call.</h6>
-				
-				<appointment-table @appointmentClicked="set"></appointment-table>
-			</div>
 			
 		</form>
+
 		<div v-if="success">
 			<div class="container">
 			    <div class="row justify-content-center">

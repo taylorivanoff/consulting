@@ -1,18 +1,28 @@
 <template>
 	<FullCalendar
 		defaultView="timeGridWeek"
-		:plugins="calendarPlugins"
+
+		:plugins="calendar.plugins"
 		:minTime="calendar.minTime"
 		:maxTime="calendar.maxTime"
+		:timeZone="calendar.timeZone"
+		:events="calendar.events"
+		:slotDuration="calendar.slotDuration"
+
+		weekends=false
+		nowIndicator=true
+		selectable=true
+
 		@select="handleSelect"
-		:selectable="true"
+		@dayClick="handleDayClick"
 	/>
 </template>
 
 <script>
-import FullCalendar from "@fullcalendar/vue";
-import timeGridPlugin from '@fullcalendar/timegrid';
-import interactionPlugin from '@fullcalendar/interaction'; // for selectable
+
+import FullCalendar from "@fullcalendar/vue"
+import timeGridPlugin from '@fullcalendar/timegrid'
+import interactionPlugin from '@fullcalendar/interaction'
 
 export default {
 	components: {
@@ -20,35 +30,51 @@ export default {
 	},
 	data() {
 		return {
-			availability: [],
+			timer: '',
 			calendar: {
-				minTime: "10:00:00",
-				maxTime: "18:00:00"
+				events: [],
+				slotDuration: "01:00:00",
+				minTime: "9:00:00",
+				maxTime: "18:00:00",
+				timeZone: "Australia/Sydney",
+				plugins: [ timeGridPlugin, interactionPlugin ]
 			},
-			calendarPlugins: [timeGridPlugin, interactionPlugin]
-		};
+		}
 	},
+	created() {
+    	this.fetch()
+
+    	this.timer = setInterval(this.fetch, 1000 * 5)
+    },
 	methods: {
-		handleSelect(arg) {
+		fetch () {
+			axios.get('/bookings')
+	            .then(response => {
+	            	this.calendar.events = response.data
+	            })
+	            .catch(error => {
+	                if (error.response) {
+	                	console.error(error.response.data)
+	                }
+	            })
+		},
+		handleSelect (arg) {
 			axios.post('/bookings', {
                     start: arg.start,
-                    end: arg.end
+                    end: arg.end,
+                    timezone: this.timeZone
                 })
                 .then(response => {
-                	console.log(response.data)
-                	this.availability = response.data
+                	this.calendar.events = response.data
                 })
                 .catch(error => {
                     if (error.response) {
                     	console.error(error.response.data)
                     }
                 })
-		},
-		handleDateClick(arg) {
-			alert(arg.date);
 		}
 	}
-};
+}
 </script>
 
 <style lang="scss">

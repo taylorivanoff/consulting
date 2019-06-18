@@ -54,7 +54,11 @@ img:hover {
           filter: none;
 }
 
-.text-strikethrough {
+#contact button[disabled] {
+  text-decoration: line-through;
+}
+
+#contact button[disabled]:hover {
   text-decoration: line-through;
 }
 

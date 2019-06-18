@@ -10,8 +10,6 @@ use Illuminate\Support\Collection;
 
 class BookingController extends Controller
 {
-
- 
     /**
      * Display a listing of the resource.
      *
@@ -19,7 +17,32 @@ class BookingController extends Controller
      */
     public function index()
     {
+        $data = new Collection;
 
+        foreach (Booking::withTrashed()->cursor() as $booking) {
+            $date = Carbon::parse($booking->time);
+
+            if ($booking->trashed()) {
+                $data->push([
+                    'id' => $booking->id,
+                    'title' => 'Unavailable',
+                    'start' => $date->format('Y-m-d\TH:i:s'),
+                    'end' => $date->format('Y-m-d\TH:i:s'),
+                    'overlap' => false,
+                ]);
+            } else { 
+                $data->push([
+                    'id' => $booking->id,
+                    'title' => 'Available',
+                    'start' => $date->format('Y-m-d\TH:i:s'),
+                    'end' => $date->format('Y-m-d\TH:i:s'),
+                    'overlap' => false,
+                    'rendering' => 'background',
+                ]);
+            }
+        }
+
+        return response()->json($data);
     }
 
     /**
@@ -40,59 +63,43 @@ class BookingController extends Controller
      */
     public function store(Request $request)
     {
-        // $times = BookingDateTime::all();
-        // $availability = array();
-        // $configs = Configuration::with('timeInterval')->first();
-        // foreach($times as $t) {
-        //     $startDate = date_create($t['booking_datetime']);
-        //     $endDate = date_create($t['booking_datetime']);
-
-        //     // Get configuration variable
-        //     // @todo default metric is minutes and only one supported
-        //     // change to whichever metrics we support in the future
-        //     $timeToAdd = $configs->timeInterval->interval; //minutes
-        //     $endDate = $endDate->add(new \DateInterval('PT'.$timeToAdd.'M'));
-        //     $event = [
-        //         'id' => $t['id'],
-        //         'title' => 'Available',
-        //         'start' => $startDate->format('Y-m-d\TH:i:s'),
-        //         'end' => $endDate->format('Y-m-d\TH:i:s'),
-        //         'overlap' => false,
-        //         'rendering' => 'background',
-        //     ];
-        //     array_push($availability, $event);
-        // }
-        // return response()->json($availability); 
-
-        // get start and end date from request
-        // loop through bookings
-        // add new Booking with interval added
-
-        // create collection from availability
         $startDate = Carbon::parse($request->start);
         $endDate = Carbon::parse($request->end);
 
-        $bookings = new Collection;
-
-        $cursorDate = $startDate;
-
-        for ($cursorDate; $cursorDate <= $endDate; $cursorDate->addMinutes(30)) {
-            Booking::firstOrCreate([
-                'time' => $cursorDate
+        while ($startDate < $endDate) {
+            $booking = Booking::firstOrCreate([
+                'time' => $startDate
             ]);
 
-
-            // $bookings->push([
-            //     'id' => $t['id'],
-            //     'title' => 'Available',
-            //     'start' => $startDate->format('Y-m-d\TH:i:s'),
-            //     'end' => $endDate->format('Y-m-d\TH:i:s'),
-            //     'overlap' => false,
-            //     'rendering' => 'background',
-            // ]);
+            $startDate->addMinutes(60);
         }
 
-        return response()->json($bookings);
+        $data = new Collection;
+
+        foreach (Booking::withTrashed()->cursor() as $booking) {
+            $date = Carbon::parse($booking->time);
+
+            if ($booking->trashed()) {
+                $data->push([
+                    'id' => $booking->id,
+                    'title' => 'Unavailable',
+                    'start' => $date->format('Y-m-d\TH:i:s'),
+                    'end' => $date->format('Y-m-d\TH:i:s'),
+                    'overlap' => false,
+                ]);
+            } else { 
+                $data->push([
+                    'id' => $booking->id,
+                    'title' => 'Available',
+                    'start' => $date->format('Y-m-d\TH:i:s'),
+                    'end' => $date->format('Y-m-d\TH:i:s'),
+                    'overlap' => false,
+                    'rendering' => 'background',
+                ]);
+            }
+        }
+
+        return response()->json($data);
     }
 
     /**

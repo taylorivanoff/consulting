@@ -14,7 +14,7 @@ class AppointmentController extends Controller
 {
 
     const MAX_DAYS = 5;
-    const START_TIME = 10;
+    const START_TIME = 9;
     const HOURS_PER_DAY = 8;
     const MINUTE_INTERVAL = 60;
 
@@ -31,6 +31,7 @@ class AppointmentController extends Controller
 
         $date = Carbon::now()->startOfDay();
         $current = Carbon::now();
+        
         for ($day = 0; $day < self::MAX_DAYS; $day++) {
             if ($day !== 0) {
                 $date->add(1, 'day');
@@ -82,9 +83,7 @@ class AppointmentController extends Controller
             ]);
         }
 
-        return response()->json(
-            $days
-        );
+        return response()->json($days);
     }
 
     /**

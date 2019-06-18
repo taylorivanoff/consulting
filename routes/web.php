@@ -48,6 +48,7 @@ Route::middleware(['auth'])->group(function () {
 
 			Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
 			Route::get('availability', 'Admin\AvailabilityController')->name('admin.availability');
+			Route::get('appointments', 'Admin\AppointmentController')->name('admin.appointments');
 			
 		});
 	});

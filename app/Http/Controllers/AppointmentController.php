@@ -31,63 +31,100 @@ class AppointmentController extends Controller
      */
     public function index()
     {
-        $bookings = Booking::all();
-
         $days = new Collection;
 
-        $date = Carbon::now()->startOfDay();
-        $current = Carbon::now();
-        
-        for ($day = 0; $day < self::MAX_DAYS; $day++) {
-            if ($day !== 0) {
-                $date->add(1, 'day');
-            }
+        $cursor = Carbon::today();
+        $maxDate = Carbon::today();
+        $maxDate->addWeekdays(5);
 
-            $date->hour = self::START_TIME;
-
+        while (($cursor->diffInDays($maxDate)) > 0) {
             $slots = new Collection;
-            for ($slot = 0; $slot <= (self::HOURS_PER_DAY * (60 / self::MINUTE_INTERVAL)); $slot++) {
-                if ($slot !== 0) {
-                    $date->addMinutes(self::MINUTE_INTERVAL);
-                }
 
-                $time = $date->format('h:i A');
-                $availability = false;
+            $maxHour = $cursor->copy();
+            $maxHour->hour = 9;
+
+            while (($cursor->diffInHours($maxHour)) > 0) {
                 $id = null;
+                $time = $cursor->format('g:i a');
+                $available = false;
 
-                foreach ($bookings as $booking) {
-                    $bookingTime = Carbon::parse($booking->time);
-                    
-                    if ($bookingTime->eq($date)) {
-                        if ($bookingTime->gt($current)) {
-                            $time = $bookingTime->format('h:i A');
-                            $id = $booking->id;
-                            $availability = true;
-                        }
-                    }
-                }
+                // $bookings = Booking::all();
+
+                // foreach ($bookings as $booking) {
+                //     $bookingTime = Carbon::parse($booking->time);
+
+                //     if ($bookingTime->eq($cursor)) {
+                //         $id = $booking->id;
+                //         $time = $bookingTime->format('g:i a');
+                //         $available = true;
+                //     }
+                // }
 
                 $slots->push([
                     'id' => $id,
                     'time' => $time,
-                    'is_available' => $availability,
+                    'available' => $available
                 ]);
-            }
 
-            if ($date->isoWeekday() === 6) {
-                $date->add(2, 'day');
+                $cursor->addMinutes(self::MINUTE_INTERVAL);
             }
-
-            if ($date->isoWeekday() === 7) {
-                $date->add(1, 'day');
-            }   
 
             $days->push([
-                'name' => $date->format("l"),
-                'date' => $date->format("d/m/y"),
+                'name' => $cursor->format("l"),
+                'date' => $cursor->format("d/m/y"),
                 'slots' => $slots
             ]);
+
+            $cursor->addWeekday();
         }
+
+
+
+
+
+
+
+        // while ($cursor->diffInDays($maxDate)) {
+        //     $cursor->addWeekday();
+
+        //     $cursor->hour = self::START_TIME;
+
+        //     $maxHour = Carbon::now()->startOfDay();
+        //     $maxHour->addHours(17);
+        //     $slots = new Collection;
+
+        //     while ($cursor->diffInHours($maxHour)) {
+        //         $cursor->addMinutes(self::MINUTE_INTERVAL);
+
+        //         $id = null;
+        //         $time = $cursor->format('g:i a');
+        //         $available = false;
+
+        //         $bookings = Booking::all();
+
+        //         foreach ($bookings as $booking) {
+        //             $bookingTime = Carbon::parse($booking->time);
+
+        //             if ($bookingTime->eq($cursor)) {
+        //                 $id = $booking->id;
+        //                 $time = $bookingTime->format('g:i a');
+        //                 $available = true;
+        //             }
+        //         }
+
+        //         $slots->push([
+        //             'id' => $id,
+        //             'time' => $time,
+        //             'available' => $available
+        //         ]);
+        //     }
+                
+        //     $days->push([
+        //         'name' => $cursor->format("l"),
+        //         'date' => $cursor->format("d/m/y"),
+        //         'slots' => $slots
+        //     ]);
+        // }
 
         return response()->json($days);
     }

@@ -9,7 +9,7 @@
 			:plugins="calendar.plugins"
 			:events="calendar.events"
 			:timeZone="calendar.timeZone"
-
+		
 		/>
 	</div>
 </template>

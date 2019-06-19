@@ -43,7 +43,7 @@
 							<input
 			                    class="form-control badge-pill p-2"
 			                    type="tel"
-			                    placeholder="+61 412 345 678"
+			                    placeholder="+61412345678"
 			                    v-model="$v.form.phone.$model"
 			                    :class="{
 			                        'is-invalid': $v.form.phone.$error,

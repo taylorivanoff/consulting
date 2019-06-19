@@ -11,12 +11,13 @@ Your scheduled call is at:
 @component('mail::table')
 |          |                 |
 |----------| ----------------|
-| Time     | {{ Illuminate\Support\Carbon::parse($appointment->time)->format('g:i A') }} | 
-| Date     | {{ Illuminate\Support\Carbon::parse($appointment->time)->format('l, d M, Y') }} | 
+| {{ Illuminate\Support\Carbon::parse($appointment->time)->format('g:ia \o\n l jS F, Y') }}     | | 
 | Duration | Approx. 30 min. | 
 @endcomponent
 
 @component('mail::panel')
+<a href="{{$links['ics']}}">Add to Calendar</a>
+
 <a href="{{$links['google']}}">Add to Google Calendar</a>
 
 <a href="{{$links['yahoo']}}">Add to Yahoo Calendar</a>

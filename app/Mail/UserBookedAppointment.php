@@ -52,9 +52,6 @@ class UserBookedAppointment extends Mailable
             ->with([
                 'appointment' => $this->appointment,
                 'links' => $links
-            ])
-            ->attachData($link->ics(), 'appointment.ics', [
-                'mime' => 'text/calendar',
             ]);
     }
 }

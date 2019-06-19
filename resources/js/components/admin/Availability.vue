@@ -9,9 +9,9 @@
 		:slotDuration="calendar.slotDuration"
 		:timeZone="calendar.timeZone"
 
-		weekends=false
-		nowIndicator=true
-		selectable=true
+		:weekends="false"
+		:nowIndicator=true
+		:selectable=true
 
 		@select="handleSelect"
 	/>

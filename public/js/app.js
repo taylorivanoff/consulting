@@ -52853,9 +52853,9 @@ var render = function() {
       events: _vm.calendar.events,
       slotDuration: _vm.calendar.slotDuration,
       timeZone: _vm.calendar.timeZone,
-      weekends: "false",
-      nowIndicator: "true",
-      selectable: "true"
+      weekends: false,
+      nowIndicator: true,
+      selectable: true
     },
     on: { select: _vm.handleSelect }
   })
@@ -52998,7 +52998,7 @@ var render = function() {
                         "is-invalid": _vm.$v.form.phone.$error,
                         "is-valid": !_vm.$v.form.phone.$invalid
                       },
-                      attrs: { type: "tel", placeholder: "+61 412 345 678" },
+                      attrs: { type: "tel", placeholder: "+61412345678" },
                       domProps: { value: _vm.$v.form.phone.$model },
                       on: {
                         input: function($event) {

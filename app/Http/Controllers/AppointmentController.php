@@ -4,11 +4,14 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\StoreBookingRequest;
+use App\Mail\UserBookedAppointment;
 use App\Models\Appointment;
 use App\Models\Booking;
+use App\Models\Lead;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
+use Illuminate\Support\Facades\Mail;
 
 class AppointmentController extends Controller
 {
@@ -108,12 +111,18 @@ class AppointmentController extends Controller
 
         $booking = Booking::find($validated['booking'])->firstOrFail();
 
+        $lead = Lead::firstOrCreate([
+            'email' => $validated['email']
+        ]);
+
         $appointment = Appointment::create([
             'name' => $validated['name'],
-            'email' => $validated['email'],
+            'email' => $lead->email,
             'phone' => $validated['phone'],
             'time' => $booking->time,
         ]);
+
+        Mail::to($lead->email)->send(new UserBookedAppointment($appointment));
 
         $booking->delete();
     }

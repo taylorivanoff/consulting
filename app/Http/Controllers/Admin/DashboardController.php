@@ -23,8 +23,6 @@ class DashboardController extends Controller
     {   
         $data = [
             'leads' => Lead::latest()->paginate(self::PAGINATION_SIZE),
-            'users' => User::latest()->paginate(self::PAGINATION_SIZE),
-            'contacts' => Contact::latest()->paginate(self::PAGINATION_SIZE),
         ];
 
         return view('admin.dashboard', ['data' => $data]);

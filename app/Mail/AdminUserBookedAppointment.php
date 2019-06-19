@@ -9,7 +9,7 @@ use Illuminate\Queue\SerializesModels;
 use Illuminate\Support\Carbon;
 use Spatie\CalendarLinks\Link;
 
-class UserBookedAppointment extends Mailable
+class AdminUserBookedAppointment extends Mailable
 {
     use Queueable, SerializesModels;
 
@@ -38,7 +38,7 @@ class UserBookedAppointment extends Mailable
             'Portfolio Website Appointment Call',
             $startTime,
             $endTime
-        )->description('With Taylor Ivanoff');
+        )->description('');
 
         $links = [
             'google' => $link->google(),
@@ -47,8 +47,8 @@ class UserBookedAppointment extends Mailable
             'ics' => $link->ics(),
         ];
 
-        return $this->markdown('emails.appointment-booked')
-            ->subject('Your upcoming call')
+        return $this->markdown('emails.admin-appointment-booked')
+            ->subject('New Appointment')
             ->with([
                 'appointment' => $this->appointment,
                 'links' => $links

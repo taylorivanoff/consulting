@@ -4,10 +4,13 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\StoreAppointmentRequest;
 use App\Http\Requests\StoreBookingRequest;
+use App\Mail\AdminUserBookedAppointment;
+use App\Mail\UserAppointmentDetails;
 use App\Mail\UserBookedAppointment;
 use App\Models\Appointment;
 use App\Models\Booking;
 use App\Models\Lead;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
 use Illuminate\Support\Collection;
@@ -122,7 +125,16 @@ class AppointmentController extends Controller
             'time' => $booking->time,
         ]);
 
-        Mail::to($lead->email)->send(new UserBookedAppointment($appointment));
+        $later = Carbon::parse($booking->time)->subtract('minutes', 30);
+
+        Mail::to($lead->email)
+            ->queue(new UserBookedAppointment($appointment));
+
+        Mail::to(User::role('admin')->get())
+            ->queue(new AdminUserBookedAppointment($appointment));
+
+        Mail::to($lead->email)
+            ->later($later, new UserAppointmentDetails($appointment));
 
         $booking->delete();
     }

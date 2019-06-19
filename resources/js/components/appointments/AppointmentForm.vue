@@ -65,7 +65,7 @@
 			<div class="container">
 			    <div class="row justify-content-center">
 			        <div class="col-md-8 my-4 text-center">
-			            <p class="h1">Thank you scheduling your call.</p>
+			            <p class="h1">Thank you for scheduling a call.</p>
 			            <p>Please check your e-mail for details.</p>
 			        </div>
 			    </div>

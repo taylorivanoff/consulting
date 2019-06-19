@@ -3,11 +3,15 @@ Hi {{ $appointment->name }},
 
 Taylor Ivanoff here. Thanks for scheduling a call with me to discuss your current portfolio website situation.
 
-Your appointment details are as follows:
+Our call will discuss your current website, your digital marketing results for your business and the common pitfalls in online portfolio marketing.
+
+After an initial analysis, I'll provide you with an actionable part of my strategic framework BeSpoke™ on how your online portfolio website could be upgraded to go about turbo-charging your client engagement results. And we'll go from there.
+
+Your scheduled call is at:
 @component('mail::table')
 |          |                 |
 |----------| ----------------|
-| Time     | {{ Illuminate\Support\Carbon::parse($appointment->time)->format('h:i A') }} | 
+| Time     | {{ Illuminate\Support\Carbon::parse($appointment->time)->format('g:i A') }} | 
 | Date     | {{ Illuminate\Support\Carbon::parse($appointment->time)->format('l, d M, Y') }} | 
 | Duration | Approx. 30 min. | 
 @endcomponent
@@ -20,7 +24,7 @@ Your appointment details are as follows:
 <a href="{{$links['webOutlook']}}">Add to Outlook</a>
 @endcomponent
 
-Before the appointment, you will receive a final e-mail with my phone number to call at the scheduled time 📞
+You will receive a confirmational e-mail 30 minutes prior to the scheduled time with details about the call  📞
 
 Speak to you soon.
 

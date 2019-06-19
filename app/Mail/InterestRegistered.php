@@ -28,6 +28,6 @@ class InterestRegistered extends Mailable
     public function build()
     {
         return $this->markdown('emails.registered')
-        ->subject('Your interest has been registered.');
+        ->subject('Your interest is registered');
     }
 }

@@ -17,9 +17,8 @@ Route::get('contact', function () {
 	return view('contact');
 })->name('contact');
 
-Route::resource('leads',        'LeadController');
+Route::resource('leads', 'LeadController');
 Route::resource('appointments', 'AppointmentController');
-Route::resource('bookings',     'BookingController');
 
 Auth::routes();
 
@@ -47,12 +46,12 @@ Route::middleware(['auth'])->group(function () {
 	});
 
 	Route::middleware(['role:admin'])->group(function () {
+		Route::resource('bookings', 'BookingController');
+		
 		Route::prefix('admin')->group(function () {
-
 			Route::get('dashboard', 'Admin\DashboardController')->name('admin.dashboard');
 			Route::get('availability', 'Admin\AvailabilityController')->name('admin.availability');
 			Route::get('appointments', 'Admin\AppointmentController')->name('admin.appointments');
-			
 		});
 	});
 

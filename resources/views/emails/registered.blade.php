@@ -4,7 +4,7 @@ Thank you for registering your interest in our Portfolio Website Evaluation Guid
 </p>
 
 <p>
-We'll use this e-mail to communicate the guide to you as soon as possible.
+The guide is currently undergoing some minor changes, however, we'll use this e-mail to communicate the guide to you as soon as possible.
 </p>
 
 <p>

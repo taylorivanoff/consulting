@@ -29,7 +29,7 @@ class EmailLogin extends Mailable
     public function build()
     {
         return $this->markdown('emails.email-login')
-        ->subject('Login via this email.')
+        ->subject('Login via this email')
         ->with(['url' => $this->url]);
     }
 }

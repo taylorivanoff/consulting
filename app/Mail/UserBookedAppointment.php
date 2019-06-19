@@ -31,7 +31,14 @@ class UserBookedAppointment extends Mailable
      */
     public function build()
     {
-        $link = Link::create('Portfolio Website Appointment Call', Carbon::parse($this->appointment->time)->timezone('Australia/Sydney'), Carbon::parse($this->appointment->time)->timezone('Australia/Sydney')->addMinutes(30))
+        $startTime = Carbon::parse($this->appointment->time);
+        $endTime = Carbon::parse($this->appointment->time)->addMinutes(30);
+
+        $link = Link::create(
+            'Portfolio Website Appointment Call',
+            $startTime,
+            $endTime
+        )
             ->description('With Taylor Ivanoff');
 
         $links = [
@@ -46,6 +53,9 @@ class UserBookedAppointment extends Mailable
             ->with([
                 'appointment' => $this->appointment,
                 'links' => $links
+            ])
+            ->attachData($link->ics(), 'appointment.ics', [
+                'mime' => 'text/calendar',
             ]);
 
 

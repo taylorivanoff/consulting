@@ -13,6 +13,7 @@ Vue.use(Vuelidate);
 
 import { VueReCaptcha } from 'vue-recaptcha-v3';
 Vue.use(VueReCaptcha, { siteKey: '6LdnrKUUAAAAACvmK8aHytfwDvGOOT_c6a-sBxUb' });
+
 /**
  * The following block of code may be used to automatically register your
  * Vue components. It will recursively scan this directory for the Vue

@@ -7,8 +7,9 @@
 			:minTime="calendar.minTime"
 			:maxTime="calendar.maxTime"
 			:plugins="calendar.plugins"
-			:timeZone="calendar.timeZone"
 			:events="calendar.events"
+			:timeZone="calendar.timeZone"
+
 		/>
 	</div>
 </template>

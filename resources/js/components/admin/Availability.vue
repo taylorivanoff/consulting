@@ -5,16 +5,15 @@
 		:plugins="calendar.plugins"
 		:minTime="calendar.minTime"
 		:maxTime="calendar.maxTime"
-		:timeZone="calendar.timeZone"
 		:events="calendar.events"
 		:slotDuration="calendar.slotDuration"
+		:timeZone="calendar.timeZone"
 
 		weekends=false
 		nowIndicator=true
 		selectable=true
 
 		@select="handleSelect"
-		@dayClick="handleDayClick"
 	/>
 </template>
 
@@ -34,9 +33,9 @@ export default {
 			calendar: {
 				events: [],
 				slotDuration: "01:00:00",
+				timeZone: "Australia/Sydney",
 				minTime: "9:00:00",
 				maxTime: "18:00:00",
-				timeZone: "Australia/Sydney",
 				plugins: [ timeGridPlugin, interactionPlugin ]
 			},
 		}

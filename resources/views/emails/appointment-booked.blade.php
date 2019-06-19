@@ -12,10 +12,6 @@ Your appointment details are as follows:
 | Duration | Approx. 30 min. | 
 @endcomponent
 
-@component('mail::button', ['url' => $links['ics'], 'color' => 'success'])
-Add To Calendar
-@endcomponent
-
 @component('mail::panel')
 <a href="{{$links['google']}}">Add to Google Calendar</a>
 

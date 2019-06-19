@@ -16057,6 +16057,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
 /* harmony default export */ __webpack_exports__["default"] = ({
@@ -16129,7 +16130,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
 
 
 
@@ -16143,9 +16143,9 @@ __webpack_require__.r(__webpack_exports__);
       calendar: {
         events: [],
         slotDuration: "01:00:00",
+        timeZone: "Australia/Sydney",
         minTime: "9:00:00",
         maxTime: "18:00:00",
-        timeZone: "Australia/Sydney",
         plugins: [_fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_1___default.a, _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2___default.a]
       }
     };
@@ -52814,8 +52814,8 @@ var render = function() {
           minTime: _vm.calendar.minTime,
           maxTime: _vm.calendar.maxTime,
           plugins: _vm.calendar.plugins,
-          timeZone: _vm.calendar.timeZone,
-          events: _vm.calendar.events
+          events: _vm.calendar.events,
+          timeZone: _vm.calendar.timeZone
         }
       })
     ],
@@ -52850,14 +52850,14 @@ var render = function() {
       plugins: _vm.calendar.plugins,
       minTime: _vm.calendar.minTime,
       maxTime: _vm.calendar.maxTime,
-      timeZone: _vm.calendar.timeZone,
       events: _vm.calendar.events,
       slotDuration: _vm.calendar.slotDuration,
+      timeZone: _vm.calendar.timeZone,
       weekends: "false",
       nowIndicator: "true",
       selectable: "true"
     },
-    on: { select: _vm.handleSelect, dayClick: _vm.handleDayClick }
+    on: { select: _vm.handleSelect }
   })
 }
 var staticRenderFns = []

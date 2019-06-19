@@ -16273,17 +16273,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
-//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -52908,20 +52897,15 @@ var render = function() {
           },
           [
             _c("div", { staticClass: "row" }, [
-              _vm._m(0),
-              _vm._v(" "),
               _c("div", { staticClass: "col-lg-6" }, [
-                _c("h6", [_vm._v("Enter your details.")]),
+                _c("h6", { staticClass: "my-3" }, [
+                  _vm._v("Enter your details.")
+                ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "staticEmail" }
-                    },
-                    [_vm._v("Name:")]
-                  ),
+                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                    _vm._v("Name:")
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-10" }, [
                     _c("input", {
@@ -52957,14 +52941,9 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "" }
-                    },
-                    [_vm._v("E-mail:")]
-                  ),
+                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                    _vm._v("E-mail:")
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-10" }, [
                     _c("input", {
@@ -53000,14 +52979,9 @@ var render = function() {
                 ]),
                 _vm._v(" "),
                 _c("div", { staticClass: "form-group row" }, [
-                  _c(
-                    "label",
-                    {
-                      staticClass: "col-sm-2 col-form-label",
-                      attrs: { for: "" }
-                    },
-                    [_vm._v("Phone:")]
-                  ),
+                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                    _vm._v("Phone:")
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "col-sm-10" }, [
                     _c("input", {
@@ -53043,8 +53017,6 @@ var render = function() {
                 ])
               ]),
               _vm._v(" "),
-              _vm._m(1),
-              _vm._v(" "),
               _c(
                 "div",
                 { staticClass: "col-lg-12 py-3" },
@@ -53064,24 +53036,10 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.success ? _c("div", [_vm._m(2)]) : _vm._e()
+    _vm.success ? _c("div", [_vm._m(0)]) : _vm._e()
   ])
 }
 var staticRenderFns = [
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-12 my-3" }, [
-      _c("p", [_vm._v("blsdf")])
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "col-lg-6" }, [_c("p", [_vm._v("blah")])])
-  },
   function() {
     var _vm = this
     var _h = _vm.$createElement

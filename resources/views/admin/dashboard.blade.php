@@ -2,7 +2,6 @@
 
 @section('content')
 <div class="container">
-
 	<a href="{{ route('admin.availability') }}">Availability</a>
 
 	<appointments></appointments>
@@ -13,6 +12,5 @@
             'excluded' => ['updated_at', 'email_verified_at', 'password', 'remember_token']
         ])
     @endforeach
-
 </div>  
 @endsection

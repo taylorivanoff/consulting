@@ -8,7 +8,7 @@ We'll use this e-mail to communicate the guide to you as soon as possible.
 </p>
 
 <p>
-✉️ You can reply directly to <a href="mailto:hello@taylorivanoff.com">this e-mail</a> with any questions you may have.
+You can reply directly to <a href="mailto:hello@taylorivanoff.com">this e-mail</a> with any questions you may have ✉️ 
 </p>
 
 <p>Kind regards,<br>

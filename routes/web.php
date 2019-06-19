@@ -13,7 +13,10 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-Route::resource('contact',      'ContactController');
+Route::get('contact', function () {
+	return view('contact');
+})->name('contact');
+
 Route::resource('leads',        'LeadController');
 Route::resource('appointments', 'AppointmentController');
 Route::resource('bookings',     'BookingController');

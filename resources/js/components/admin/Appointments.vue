@@ -29,7 +29,7 @@ export default {
 			calendar: {
 				events: [],
 				minTime: "9:00:00",
-				maxTime: "18:00:00",
+				maxTime: "19:00:00",
 				timeZone: "Australia/Sydney",
 				plugins: [ timeGridPlugin ]
 			},
@@ -38,7 +38,7 @@ export default {
 	created() {
     	this.fetch()
 
-    	this.timer = setInterval(this.fetch, 1000 * 5)
+    	this.timer = setInterval(this.fetch, 1000 * 4)
     },
 	methods: {
 		fetch () {

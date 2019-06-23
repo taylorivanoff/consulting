@@ -1,7 +1,6 @@
 @extends('layouts.app')
 
 @section('content')
-
 <div id="hero" class="py-4">
     <div class="container">
         <div class="row">

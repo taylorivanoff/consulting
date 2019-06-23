@@ -32,18 +32,17 @@ export default {
 			timer: '',
 			calendar: {
 				events: [],
-				slotDuration: "01:00:00",
+				slotDuration: "02:00:00",
 				timeZone: "Australia/Sydney",
 				minTime: "9:00:00",
-				maxTime: "18:00:00",
+				maxTime: "19:00:00",
 				plugins: [ timeGridPlugin, interactionPlugin ]
 			},
 		}
 	},
 	created() {
     	this.fetch()
-
-    	this.timer = setInterval(this.fetch, 1000 * 5)
+    	this.timer = setInterval(this.fetch, 1000 * 4)
     },
 	methods: {
 		fetch () {

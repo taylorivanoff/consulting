@@ -71,7 +71,7 @@ class BookingController extends Controller
                 'time' => $startDate
             ]);
 
-            $startDate->addMinutes(60);
+            $startDate->addMinutes(120);
         }
 
         $data = new Collection;

@@ -19,11 +19,6 @@ use Illuminate\Support\Facades\Mail;
 class AppointmentController extends Controller
 {
 
-    const MAX_DAYS = 5;
-    const START_TIME = 9;
-    const HOURS_PER_DAY = 8;
-    const MINUTE_INTERVAL = 60;
-
     /**
      * Display a listing of the resource.
      *
@@ -33,40 +28,40 @@ class AppointmentController extends Controller
     {
         $days = new Collection;
 
-        $cursor = Carbon::today();
-        $maxDate = Carbon::today();
-        $maxDate->addWeekdays(5);
+        $cursor = Carbon::today()->startOfWeek()->addWeek(1);
+
+        $maxDate = $cursor->copy()->addDays(5);
 
         while (($cursor->diffInDays($maxDate)) > 0) {
             $slots = new Collection;
 
-            $maxHour = $cursor->copy();
-            $maxHour->hour = 9;
+            $cursor->hour = 9;
+            $maxHour = $cursor->copy()->addHours(10);
 
-            while (($cursor->diffInHours($maxHour)) > 0) {
+            while (($cursor->diffInMinutes($maxHour)) > 0) {
                 $id = null;
                 $time = $cursor->format('g:i a');
                 $available = false;
 
-                // $bookings = Booking::all();
+                $bookings = Booking::all();
 
-                // foreach ($bookings as $booking) {
-                //     $bookingTime = Carbon::parse($booking->time);
+                foreach ($bookings as $booking) {
+                    $bookingTime = Carbon::parse($booking->time);
 
-                //     if ($bookingTime->eq($cursor)) {
-                //         $id = $booking->id;
-                //         $time = $bookingTime->format('g:i a');
-                //         $available = true;
-                //     }
-                // }
+                    if ($cursor->eq($bookingTime)) {
+                        $id = $booking->id;
+                        $time = $bookingTime->format('g:i a');
+                        $available = true;
+                    }
+                }
 
                 $slots->push([
                     'id' => $id,
                     'time' => $time,
-                    'available' => $available
+                    'is_available' => $available
                 ]);
 
-                $cursor->addMinutes(self::MINUTE_INTERVAL);
+                $cursor->addHours(2);
             }
 
             $days->push([
@@ -77,54 +72,6 @@ class AppointmentController extends Controller
 
             $cursor->addWeekday();
         }
-
-
-
-
-
-
-
-        // while ($cursor->diffInDays($maxDate)) {
-        //     $cursor->addWeekday();
-
-        //     $cursor->hour = self::START_TIME;
-
-        //     $maxHour = Carbon::now()->startOfDay();
-        //     $maxHour->addHours(17);
-        //     $slots = new Collection;
-
-        //     while ($cursor->diffInHours($maxHour)) {
-        //         $cursor->addMinutes(self::MINUTE_INTERVAL);
-
-        //         $id = null;
-        //         $time = $cursor->format('g:i a');
-        //         $available = false;
-
-        //         $bookings = Booking::all();
-
-        //         foreach ($bookings as $booking) {
-        //             $bookingTime = Carbon::parse($booking->time);
-
-        //             if ($bookingTime->eq($cursor)) {
-        //                 $id = $booking->id;
-        //                 $time = $bookingTime->format('g:i a');
-        //                 $available = true;
-        //             }
-        //         }
-
-        //         $slots->push([
-        //             'id' => $id,
-        //             'time' => $time,
-        //             'available' => $available
-        //         ]);
-        //     }
-                
-        //     $days->push([
-        //         'name' => $cursor->format("l"),
-        //         'date' => $cursor->format("d/m/y"),
-        //         'slots' => $slots
-        //     ]);
-        // }
 
         return response()->json($days);
     }
@@ -149,7 +96,7 @@ class AppointmentController extends Controller
     {
         $validated = $request->validated();
 
-        $booking = Booking::find($validated['booking'])->firstOrFail();
+        $booking = Booking::findOrFail($validated['booking']);
 
         $lead = Lead::firstOrCreate([
             'email' => $validated['email']

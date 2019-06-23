@@ -16070,7 +16070,7 @@ __webpack_require__.r(__webpack_exports__);
       calendar: {
         events: [],
         minTime: "9:00:00",
-        maxTime: "18:00:00",
+        maxTime: "19:00:00",
         timeZone: "Australia/Sydney",
         plugins: [_fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_1___default.a]
       }
@@ -16078,7 +16078,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.fetch();
-    this.timer = setInterval(this.fetch, 1000 * 5);
+    this.timer = setInterval(this.fetch, 1000 * 4);
   },
   methods: {
     fetch: function fetch() {
@@ -16142,17 +16142,17 @@ __webpack_require__.r(__webpack_exports__);
       timer: '',
       calendar: {
         events: [],
-        slotDuration: "01:00:00",
+        slotDuration: "02:00:00",
         timeZone: "Australia/Sydney",
         minTime: "9:00:00",
-        maxTime: "18:00:00",
+        maxTime: "19:00:00",
         plugins: [_fullcalendar_timegrid__WEBPACK_IMPORTED_MODULE_1___default.a, _fullcalendar_interaction__WEBPACK_IMPORTED_MODULE_2___default.a]
       }
     };
   },
   created: function created() {
     this.fetch();
-    this.timer = setInterval(this.fetch, 1000 * 5);
+    this.timer = setInterval(this.fetch, 1000 * 4);
   },
   methods: {
     fetch: function fetch() {
@@ -16374,9 +16374,9 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 
 
- // for selectable
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -16387,7 +16387,7 @@ __webpack_require__.r(__webpack_exports__);
   },
   created: function created() {
     this.fetch();
-    this.timer = setInterval(this.fetch, 1000 * 5);
+    this.timer = setInterval(this.fetch, 1000 * 4);
   },
   methods: {
     fetch: function fetch() {
@@ -53085,46 +53085,55 @@ var render = function() {
       "div",
       { staticClass: "row border" },
       _vm._l(_vm.appointments, function(appointment) {
-        return _c(
-          "div",
-          { staticClass: "col-xs-12 col-lg  p-2 m-1" },
-          [
-            _c("div", { staticClass: "text-center border-bottom" }, [
-              _c("h5", { staticClass: "mb-1" }, [
-                _vm._v(_vm._s(appointment.name))
-              ]),
-              _vm._v(" "),
-              _c("h6", [_vm._v(_vm._s(appointment.date))])
-            ]),
-            _vm._v(" "),
-            _vm._l(appointment.slots, function(slot) {
-              return _c("div", { staticClass: "text-center" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-slot w-75 my-1 ",
-                    class: {
-                      "btn-success": slot.is_available,
-                      "btn-muted": !slot.is_available
-                    },
-                    attrs: {
-                      type: "submit",
-                      id: slot.id,
-                      disabled: !slot.is_available
-                    },
-                    on: {
-                      click: function($event) {
-                        return _vm.$emit("appointmentClicked", slot.id)
-                      }
-                    }
-                  },
-                  [_vm._v("\n\t\t\t\t\t" + _vm._s(slot.time) + "\n\t\t\t\t")]
-                )
-              ])
-            })
-          ],
-          2
-        )
+        return _vm.appointments.length
+          ? _c(
+              "div",
+              { staticClass: "col-xs-12 col-lg  p-2 m-1" },
+              [
+                _c("div", { staticClass: "text-center border-bottom" }, [
+                  _c("h5", { staticClass: "mb-1" }, [
+                    _vm._v(_vm._s(appointment.name))
+                  ]),
+                  _vm._v(" "),
+                  _c("h6", [_vm._v(_vm._s(appointment.date))])
+                ]),
+                _vm._v(" "),
+                _vm._l(appointment.slots, function(slot) {
+                  return _c("div", { staticClass: "text-center" }, [
+                    _c(
+                      "button",
+                      {
+                        staticClass: "btn btn-slot my-1",
+                        class: {
+                          "btn-success": slot.is_available,
+                          "btn-muted": !slot.is_available
+                        },
+                        attrs: {
+                          type: "submit",
+                          id: slot.id,
+                          disabled: !slot.is_available
+                        },
+                        on: {
+                          click: function($event) {
+                            return _vm.$emit(
+                              "appointmentClicked",
+                              $event.target.id
+                            )
+                          }
+                        }
+                      },
+                      [
+                        _vm._v(
+                          "\n\t\t\t\t\t" + _vm._s(slot.time) + "\n\t\t\t\t"
+                        )
+                      ]
+                    )
+                  ])
+                })
+              ],
+              2
+            )
+          : _vm._e()
       }),
       0
     )

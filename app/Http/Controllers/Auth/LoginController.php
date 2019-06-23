@@ -57,7 +57,8 @@ class LoginController extends Controller
             'token' => $emailLogin->token
         ]);
 
-        Mail::to($emailLogin->email)->queue(new EmailLoginMail($url));
+        Mail::to($emailLogin->email)
+            ->send(new EmailLoginMail($url));
 
         // show the users a view saying "check your email"
         return view('auth.email-login-sent');

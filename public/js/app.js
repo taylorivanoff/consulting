@@ -15925,6 +15925,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: {
@@ -52728,10 +52730,14 @@ var render = function() {
                   expression: "$v.form.email.$model"
                 }
               ],
-              staticClass: "form-control badge-pill py-2 px-3",
+              staticClass: "form-control badge-pill py-2",
               class: {
                 "is-invalid": _vm.$v.form.email.$error,
                 "is-valid": !_vm.$v.form.email.$invalid
+              },
+              staticStyle: {
+                "padding-left": "1.4rem",
+                "padding-right": "1.4rem"
               },
               attrs: { type: "email", placeholder: "name@company.com" },
               domProps: { value: _vm.$v.form.email.$model },
@@ -52752,10 +52758,15 @@ var render = function() {
             _c(
               "button",
               {
-                staticClass: "btn text-uppercase badge-pill py-1 px-3 w-75",
+                staticClass:
+                  "btn text-uppercase font-weight-bold badge-pill py-1",
                 class: {
                   "btn-dark": _vm.form.buttonStatus === 0,
                   "btn-success": _vm.form.buttonStatus === 2
+                },
+                staticStyle: {
+                  "padding-left": "1.4rem",
+                  "padding-right": "1.4rem"
                 },
                 attrs: { type: "submit", disabled: _vm.form.buttonStatus === 1 }
               },

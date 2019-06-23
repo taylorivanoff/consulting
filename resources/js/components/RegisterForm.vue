@@ -4,7 +4,8 @@
             <div class="col-lg-6">
                 <div class="input-group">
                     <input
-                        class="form-control badge-pill py-2 px-3"
+                        class="form-control badge-pill py-2"
+                        style="padding-left: 1.4rem; padding-right: 1.4rem;"
                         type="email"
                         placeholder="name@company.com"
                         v-model="$v.form.email.$model"
@@ -18,7 +19,8 @@
             <div class="col pt-md-0 pt-2">
                 <div class="input-group">
                     <button 
-                            class="btn text-uppercase badge-pill py-1 px-3 w-75"
+                            class="btn text-uppercase font-weight-bold badge-pill py-1"
+                            style="padding-left: 1.4rem; padding-right: 1.4rem;"
                             type="submit"
                             :class="{
                                 'btn-dark': form.buttonStatus === 0,

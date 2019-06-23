@@ -4,19 +4,20 @@
 <div id="hero" class="py-4">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 my-4">
+            <div class="col-lg-9 my-2">
                 <h1 class="display-4">I help architects upgrade their portfolio websites to  win more projects.</h1>
             </div>
         </div>
 
-        <div class="row">
+        <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2 my-" id="subtext">I've used the proven and guaranteed BeSpoke™ process to help architectural firms grow their revenue by engaging 200% to 500% or more befitting and qualified clientele in 6 weeks.</p>
+                <p class="h2" id="subtext">I've used the proven and guaranteed BeSpoke™ process to help architectural firms grow their revenue by engaging 200% to 500% or more befitting and qualified clientele in 6 weeks.</p>
 
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a
                         href="{{ route('contact') }}" 
-                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-2"
+                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2"
+                        style="padding-left: 1.4rem; padding-right: 1.4rem;"
                     >Contact Taylor To Find Out How</a>
                 </div>
             </div>

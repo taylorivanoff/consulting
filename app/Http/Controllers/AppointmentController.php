@@ -28,7 +28,11 @@ class AppointmentController extends Controller
     {
         $days = new Collection;
 
-        $cursor = Carbon::today()->startOfWeek()->addWeek(1);
+        $cursor = Carbon::today();
+
+        if ($cursor->isWeekend()) {
+            $cursor->startOfWeek()->addWeek(1);
+        }
 
         $maxDate = $cursor->copy()->addDays(5);
 

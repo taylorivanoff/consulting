@@ -34,7 +34,7 @@ class AppointmentController extends Controller
             $cursor->startOfWeek()->addWeek(1);
         }
 
-        $maxDate = $cursor->copy()->addDays(5);
+        $maxDate = $cursor->copy()->addWeekdays(5);
 
         while (($cursor->diffInDays($maxDate)) > 0) {
             $slots = new Collection;
@@ -47,7 +47,7 @@ class AppointmentController extends Controller
                 $time = $cursor->format('g:i a');
                 $available = false;
 
-                foreach (Booking::cursor() as $booking) {
+                foreach (Booking::all() as $booking) {
                     $bookingTime = Carbon::parse($booking->time);
 
                     if ($cursor->eq($bookingTime)) {

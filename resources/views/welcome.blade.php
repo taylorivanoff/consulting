@@ -11,7 +11,7 @@
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">I've used the proven BeSpoke™ program to grow the revenue of architectural firms<br>in 6 weeks by engaging 200% to 500%<br> or more befitting clientele.</p>
+                <p class="h2" id="subtext">I've used the proven BeSpoke™ program to upgrade portfolio websites and grow the revenue of architectural firms in 6 weeks by engaging 200% to 500% or more befitting clientele.</p>
 
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a

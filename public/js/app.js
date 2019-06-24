@@ -16132,6 +16132,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 
 
 
@@ -16144,7 +16148,7 @@ __webpack_require__.r(__webpack_exports__);
       timer: '',
       calendar: {
         events: [],
-        slotDuration: "02:00:00",
+        slotDuration: "01:00:00",
         timeZone: "Australia/Sydney",
         minTime: "9:00:00",
         maxTime: "19:00:00",
@@ -52855,21 +52859,30 @@ var render = function() {
   var _vm = this
   var _h = _vm.$createElement
   var _c = _vm._self._c || _h
-  return _c("FullCalendar", {
-    attrs: {
-      defaultView: "timeGridWeek",
-      plugins: _vm.calendar.plugins,
-      minTime: _vm.calendar.minTime,
-      maxTime: _vm.calendar.maxTime,
-      events: _vm.calendar.events,
-      slotDuration: _vm.calendar.slotDuration,
-      timeZone: _vm.calendar.timeZone,
-      weekends: false,
-      nowIndicator: true,
-      selectable: true
-    },
-    on: { select: _vm.handleSelect }
-  })
+  return _c(
+    "div",
+    { staticClass: "my-3" },
+    [
+      _c("p", { staticClass: "h1" }, [_vm._v("Availability")]),
+      _vm._v(" "),
+      _c("FullCalendar", {
+        attrs: {
+          defaultView: "timeGridWeek",
+          plugins: _vm.calendar.plugins,
+          minTime: _vm.calendar.minTime,
+          maxTime: _vm.calendar.maxTime,
+          events: _vm.calendar.events,
+          slotDuration: _vm.calendar.slotDuration,
+          timeZone: _vm.calendar.timeZone,
+          weekends: false,
+          nowIndicator: true,
+          selectable: true
+        },
+        on: { select: _vm.handleSelect }
+      })
+    ],
+    1
+  )
 }
 var staticRenderFns = []
 render._withStripped = true

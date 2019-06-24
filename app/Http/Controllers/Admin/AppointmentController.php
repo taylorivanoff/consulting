@@ -18,11 +18,9 @@ class AppointmentController extends Controller
      */
     public function __invoke(Request $request)
     {   
-        $appointments = Appointment::all();
-
         $upcoming = new Collection;
 
-        foreach ($appointments as $appointment) {
+        foreach (Appointment::latest()->cursor() as $appointment) {
             $date = Carbon::parse($appointment->time);
 
             $upcoming->push([

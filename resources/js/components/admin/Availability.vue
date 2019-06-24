@@ -1,20 +1,24 @@
 <template>
-	<FullCalendar
-		defaultView="timeGridWeek"
+	<div class="my-3">
+		<p class="h1">Availability</p>
 
-		:plugins="calendar.plugins"
-		:minTime="calendar.minTime"
-		:maxTime="calendar.maxTime"
-		:events="calendar.events"
-		:slotDuration="calendar.slotDuration"
-		:timeZone="calendar.timeZone"
+		<FullCalendar
+			defaultView="timeGridWeek"
 
-		:weekends="false"
-		:nowIndicator=true
-		:selectable=true
+			:plugins="calendar.plugins"
+			:minTime="calendar.minTime"
+			:maxTime="calendar.maxTime"
+			:events="calendar.events"
+			:slotDuration="calendar.slotDuration"
+			:timeZone="calendar.timeZone"
 
-		@select="handleSelect"
-	/>
+			:weekends="false"
+			:nowIndicator=true
+			:selectable=true
+
+			@select="handleSelect"
+		/>
+	</div>
 </template>
 
 <script>
@@ -32,7 +36,7 @@ export default {
 			timer: '',
 			calendar: {
 				events: [],
-				slotDuration: "02:00:00",
+				slotDuration: "01:00:00",
 				timeZone: "Australia/Sydney",
 				minTime: "9:00:00",
 				maxTime: "19:00:00",

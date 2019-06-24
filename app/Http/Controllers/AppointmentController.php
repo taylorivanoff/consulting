@@ -47,9 +47,7 @@ class AppointmentController extends Controller
                 $time = $cursor->format('g:i a');
                 $available = false;
 
-                $bookings = Booking::all();
-
-                foreach ($bookings as $booking) {
+                foreach (Booking::cursor() as $booking) {
                     $bookingTime = Carbon::parse($booking->time);
 
                     if ($cursor->eq($bookingTime)) {

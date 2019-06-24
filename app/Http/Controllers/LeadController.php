@@ -29,6 +29,7 @@ class LeadController extends Controller
         );
 
         $leads = Lead::latest()->get();
+        
         $columns = array('ID', 'Email', 'Created At');
 
         $callback = function() use ($leads, $columns)
@@ -64,7 +65,7 @@ class LeadController extends Controller
     {
         $validated = $request->validated();
 
-        $lead = Lead::create($validated);
+        $lead = Lead::firstOrCreate($validated);
         
         Mail::to($lead->email)
             ->queue(new InterestRegistered());

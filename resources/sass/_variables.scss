@@ -67,12 +67,12 @@ $navbar-toggler-padding-x: 0rem;
 }
 
 // Images
-img {
+.companies img {
   filter: gray;
   -webkit-filter: grayscale(1);
 }
 
-img:hover {
+.companies img:hover {
   filter: none;
 }
 

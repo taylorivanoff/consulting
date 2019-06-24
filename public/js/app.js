@@ -16279,6 +16279,17 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
@@ -52922,121 +52933,128 @@ var render = function() {
           [
             _c("div", { staticClass: "row" }, [
               _c("div", { staticClass: "col-lg-6" }, [
-                _c("h6", { staticClass: "my-3" }, [
-                  _vm._v("Enter your details.")
-                ]),
+                _vm._m(0),
                 _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                    _vm._v("Name:")
+                _c("div", { staticClass: "my-3" }, [
+                  _c("p", { staticClass: "h6" }, [
+                    _vm._v("Enter your details.")
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.$v.form.name.$model,
-                          expression: "$v.form.name.$model"
-                        }
-                      ],
-                      staticClass: "form-control badge-pill p-2",
-                      class: {
-                        "is-invalid": _vm.$v.form.name.$error,
-                        "is-valid": !_vm.$v.form.name.$invalid
-                      },
-                      attrs: { type: "text", placeholder: "John Smith" },
-                      domProps: { value: _vm.$v.form.name.$model },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                      _vm._v("Name:")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.form.name.$model,
+                            expression: "$v.form.name.$model"
                           }
-                          _vm.$set(
-                            _vm.$v.form.name,
-                            "$model",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control badge-pill p-2",
+                        class: {
+                          "is-invalid": _vm.$v.form.name.$error,
+                          "is-valid": !_vm.$v.form.name.$invalid
+                        },
+                        attrs: { type: "text", placeholder: "John Smith" },
+                        domProps: { value: _vm.$v.form.name.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.form.name,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                    _vm._v("E-mail:")
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.$v.form.email.$model,
-                          expression: "$v.form.email.$model"
-                        }
-                      ],
-                      staticClass: "form-control badge-pill p-2",
-                      class: {
-                        "is-invalid": _vm.$v.form.email.$error,
-                        "is-valid": !_vm.$v.form.email.$invalid
-                      },
-                      attrs: { type: "email", placeholder: "name@company.com" },
-                      domProps: { value: _vm.$v.form.email.$model },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                      _vm._v("E-mail:")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.form.email.$model,
+                            expression: "$v.form.email.$model"
                           }
-                          _vm.$set(
-                            _vm.$v.form.email,
-                            "$model",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control badge-pill p-2",
+                        class: {
+                          "is-invalid": _vm.$v.form.email.$error,
+                          "is-valid": !_vm.$v.form.email.$invalid
+                        },
+                        attrs: {
+                          type: "email",
+                          placeholder: "name@company.com"
+                        },
+                        domProps: { value: _vm.$v.form.email.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.form.email,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
-                  ])
-                ]),
-                _vm._v(" "),
-                _c("div", { staticClass: "form-group row" }, [
-                  _c("label", { staticClass: "col-sm-2 col-form-label" }, [
-                    _vm._v("Phone:")
+                      })
+                    ])
                   ]),
                   _vm._v(" "),
-                  _c("div", { staticClass: "col-sm-10" }, [
-                    _c("input", {
-                      directives: [
-                        {
-                          name: "model",
-                          rawName: "v-model",
-                          value: _vm.$v.form.phone.$model,
-                          expression: "$v.form.phone.$model"
-                        }
-                      ],
-                      staticClass: "form-control badge-pill p-2",
-                      class: {
-                        "is-invalid": _vm.$v.form.phone.$error,
-                        "is-valid": !_vm.$v.form.phone.$invalid
-                      },
-                      attrs: { type: "tel", placeholder: "+61412345678" },
-                      domProps: { value: _vm.$v.form.phone.$model },
-                      on: {
-                        input: function($event) {
-                          if ($event.target.composing) {
-                            return
+                  _c("div", { staticClass: "form-group row" }, [
+                    _c("label", { staticClass: "col-sm-2 col-form-label" }, [
+                      _vm._v("Phone:")
+                    ]),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "col-sm-10" }, [
+                      _c("input", {
+                        directives: [
+                          {
+                            name: "model",
+                            rawName: "v-model",
+                            value: _vm.$v.form.phone.$model,
+                            expression: "$v.form.phone.$model"
                           }
-                          _vm.$set(
-                            _vm.$v.form.phone,
-                            "$model",
-                            $event.target.value
-                          )
+                        ],
+                        staticClass: "form-control badge-pill p-2",
+                        class: {
+                          "is-invalid": _vm.$v.form.phone.$error,
+                          "is-valid": !_vm.$v.form.phone.$invalid
+                        },
+                        attrs: { type: "tel", placeholder: "+61412345678" },
+                        domProps: { value: _vm.$v.form.phone.$model },
+                        on: {
+                          input: function($event) {
+                            if ($event.target.composing) {
+                              return
+                            }
+                            _vm.$set(
+                              _vm.$v.form.phone,
+                              "$model",
+                              $event.target.value
+                            )
+                          }
                         }
-                      }
-                    })
+                      })
+                    ])
                   ])
                 ])
               ]),
@@ -53045,8 +53063,8 @@ var render = function() {
                 "div",
                 { staticClass: "col-lg-12 py-3" },
                 [
-                  _c("h6", [
-                    _vm._v("Select a time slot below to schedule a call.")
+                  _c("p", { staticClass: "h6" }, [
+                    _vm._v("Select a time slot below.")
                   ]),
                   _vm._v(" "),
                   _c("appointment-table", {
@@ -53060,7 +53078,7 @@ var render = function() {
         )
       : _vm._e(),
     _vm._v(" "),
-    _vm.success ? _c("div", [_vm._m(0)]) : _vm._e()
+    _vm.success ? _c("div", [_vm._m(1)]) : _vm._e()
   ])
 }
 var staticRenderFns = [
@@ -53068,14 +53086,30 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "my-4" }, [
+      _c("p", [
+        _vm._v(
+          "\n\t\t\t\t\t\tTo apply for the BeSpoke™ program, where your firm’s upgraded portfolio website will attract more befitting clientele, win major projects and grow your revenue, select a date and time slot below to schedule an application session. \n\t\t\t\t\t"
+        )
+      ]),
+      _vm._v(" "),
+      _c("p", [
+        _vm._v(
+          "\n\t\t\t\t\t\tIn this discussion, we’ll determine whether your architectural firm is able to get the most value from this program.\n\t\t\t\t\t"
+        )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
     return _c("div", { staticClass: "container" }, [
       _c("div", { staticClass: "row justify-content-center" }, [
         _c("div", { staticClass: "col-md-8 my-4 text-center" }, [
-          _c("p", { staticClass: "h1" }, [
-            _vm._v("Thank you for scheduling a call.")
-          ]),
-          _vm._v(" "),
-          _c("p", [_vm._v("Please check your e-mail for details.")])
+          _c("p", { staticClass: "h3" }, [
+            _vm._v("Please check your e-mail for details.")
+          ])
         ])
       ])
     ])

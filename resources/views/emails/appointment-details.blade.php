@@ -1,18 +1,17 @@
 @component('mail::message')
 {{ $appointment->name }},
 
-Your call to review your firm's current portfolio website situation is in 30 minutes time.
+Your application to determine whether your architectural firm is able to get the most value from this program is in 30 minutes.
 
-Again, our call will discuss your current website, your digital marketing results for your business and the common pitfalls designers face in online portfolio marketing.
+We'll be able to discuss your studio, where your current results are at, where you would like them to be for your business, and a few other questions.
 
-After, I'll provide you with an actionable part of BeSpoke™ on how to go about turbo-charging your client engagement results. And we'll go from there.
+Afterwards, if it's determined that your business is a fit for the program, we'll be able to  go from there.
 
-Get in touch at {{ Illuminate\Support\Carbon::parse($appointment->time)->format('g:ia') }} 📞
+Let's chat, give me a call at {{ Illuminate\Support\Carbon::parse($appointment->time)->format('g:i a') }} ⏰
 
 @component('mail::button', ['url' => 'tel:+61 411 346 787', 'color' => 'success'])
 Call Taylor
 @endcomponent
 
-<p>Kind regards,<br>
-Taylor Ivanoff, Director</p>
+Taylor Ivanoff, Director
 @endcomponent

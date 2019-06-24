@@ -3,7 +3,7 @@
 @section('content')
 <div id="hero" class="pt-3 pb-2 align-center">
 	<div class="container">
-		<h1>Contact Taylor</h1>
+		<h1>Apply For BeSpoke™</h1>
 	</div>
 </div>
 <div class="container">

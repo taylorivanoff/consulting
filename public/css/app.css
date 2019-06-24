@@ -44,12 +44,12 @@
   font-family: "SailecMedium";
 }
 
-img {
+.companies img {
   filter: gray;
   -webkit-filter: grayscale(1);
 }
 
-img:hover {
+.companies img:hover {
   -webkit-filter: none;
           filter: none;
 }

@@ -13,7 +13,7 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-Route::get('contact', function () {
+Route::get('apply', function () {
 	return view('contact');
 })->name('contact');
 

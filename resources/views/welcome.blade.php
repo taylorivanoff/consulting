@@ -5,14 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9 my-2">
-                <h1 class="display-4">I help architects win major projects with breakthrough portfolio websites.</h1>
+                <h1 class="display-4">I help architects win more projects with breakthrough portfolio websites.</h1>
             </div>
         </div>
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">I've used the proven BeSpoke™ program to upgrade portfolio websites and grow the revenue of architectural firms in 6 weeks by engaging 200% to 500% or more befitting clientele.</p>
-
+                <p class="h2" id="subtext">I've used the proven BeSpoke™ process to upgrade existing portfolio websites for architectural firms to allure befitting clientele and win more business in 6 weeks.</p>
                 <div class="text-center text-lg-left pt-2 m-0">
                     <a
                         href="{{ route('contact') }}" 

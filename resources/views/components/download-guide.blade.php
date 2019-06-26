@@ -10,9 +10,9 @@
                 <h1>Get Your Free Portfolio Website Evaluation Guide</h1>
 
                 <div class="py-1">
-                    <p class="h5">Learn 7 practical steps to strengthen your firm's creative positioning using your portfolio website.</p>
+                    <p class="h5">Learn 7 practical tips to strengthen your creative positioning using your portfolio website.</p>
 
-                    <p>In this guide, Taylor takes you step-by-step through a sample of the BeSpoke™ program to ensure that combined, your digital marketing and architectural vision successfully captivate your ideal clientele.</p>
+                    <p>In this guide, Taylor takes you step-by-step through a sample of the BeSpoke™ process to ensure that your architectural vision captivates your ideal clientele.</p>
                 </div>
                 <register-form title="Register Your Interest"></register-form>
             </div>

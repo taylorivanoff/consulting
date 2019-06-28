@@ -11,7 +11,7 @@
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">I've used the proven BeSpoke™ process to upgrade existing portfolio websites for architectural firms to allure befitting clientele and win more business in 6 weeks.</p>
+                <p class="h2" id="subtext">I've used the proven BeSpoke™ process to implement anew or upgrade existing portfolio websites for architectural firms to allure befit clientele and affirm creative value to business opportunities in 6 weeks.</p>
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
                         href="{{ route('contact') }}" 

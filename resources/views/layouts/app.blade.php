@@ -73,11 +73,11 @@
         <footer>
             <div class="container">
                 <div class="row my-3">
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3 pb-sm-0">
                         <small class="text-secondary"><span class="align-middle">©</span> {{ now()->year }} <a href="https://abr.business.gov.au/ABN/View?abn=13633865362">Taylor Ivanoff Consulting</a></small>
                     </div>
 
-                    <div class="col-md-6">
+                    <div class="col-md-6 pb-3 pb-sm-0">
                         <small class="text-secondary">This site is protected by reCAPTCHA and the Google 
                             <a href="https://policies.google.com/privacy">Privacy Policy</a> and
                             <a href="https://policies.google.com/terms">Terms of Service</a> apply.

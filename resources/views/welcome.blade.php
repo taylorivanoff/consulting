@@ -1,10 +1,10 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="hero" class="py-4">
+<div id="hero" class="py-5">
     <div class="container">
         <div class="row">
-            <div class="col-lg-9 my-2">
+            <div class="col-lg-9 py-3">
                 <h1 class="display-4">I help architects win more projects with breakthrough portfolio websites.</h1>
             </div>
         </div>
@@ -12,7 +12,7 @@
         <div class="row my-3">
             <div class="col-lg-7">
                 <p class="h2" id="subtext">I've used the proven BeSpoke™ process to upgrade existing portfolio websites for architectural firms to allure befitting clientele and win more business in 6 weeks.</p>
-                <div class="text-center text-lg-left pt-2 m-0">
+                <div class="text-center text-lg-left py-4 m-0">
                     <a
                         href="{{ route('contact') }}" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
@@ -20,7 +20,7 @@
                 </div>
             </div>
 
-            <div class="offset-lg-1 col-lg-4 pt-3 text-center">
+            <div class="offset-lg-1 col-lg-4 text-center">
                 <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
                 <p class="h5">Taylor Ivanoff</p>
                 <p class="h6">Portfolio Website Consulting Expert</p>
@@ -29,7 +29,7 @@
     </div>
 </div>
 
-<div class="bg-light py-1">
+<div class="py-3">
     <div class="container">
         <div class="row companies">
             <div class="col text-center align-middle" style="padding-top: 5px;">

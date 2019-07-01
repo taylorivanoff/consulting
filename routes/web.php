@@ -13,9 +13,9 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-Route::get('apply', function () {
-	return view('contact');
-})->name('contact');
+// Route::get('contact', function () {
+// 	return view('contact');
+// })->name('contact');
 
 Route::resource('leads', 'LeadController');
 Route::resource('appointments', 'AppointmentController');

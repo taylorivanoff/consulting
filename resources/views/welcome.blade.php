@@ -11,12 +11,12 @@
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">I've used the proven BeSpoke™ process to implement anew or upgrade existing portfolio websites for architectural firms to allure befit clientele and affirm creative value to business opportunities in 6 weeks.</p>
+                <p class="h2" id="subtext">With BeSpoke™, I've delivered showcase web experiences that captivate and convert befitting clientele.</p>
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
-                        href="{{ route('contact') }}" 
+                        href="tel: +61 411 346 787" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
-                    >Apply For BeSpoke™</a>
+                    >Contact To Learn More</a>
                 </div>
             </div>
 

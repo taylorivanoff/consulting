@@ -5,13 +5,13 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9 py-3">
-                <h1 class="display-4">I help architects win more projects with breakthrough portfolio websites.</h1>
+                <h1 class="display-4">I help architects win more projects with breakthrough web platforms.</h1>
             </div>
         </div>
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">With BeSpoke™, I've delivered showcase web experiences that captivate and convert befitting clientele.</p>
+                <p class="h2" id="subtext">Using the proven and guaranteed BeSpoke™ process, I deliver showcase web experiences for architectural firms that captivate befitting clientele and win more business.</p>
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
                         href="tel: +61 411 346 787" 
@@ -23,7 +23,7 @@
             <div class="offset-lg-1 col-lg-4 text-center">
                 <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
                 <p class="h5">Taylor Ivanoff</p>
-                <p class="h6">Portfolio Website Consulting Expert</p>
+                <p class="h6">Design, Software Engineering Consultant</p>
             </div>
         </div>
     </div>
@@ -48,6 +48,6 @@
     </div>
 </div>
 
-@include('components.download-guide')
+{{-- @include('components.download-guide') --}}
 
 @endsection

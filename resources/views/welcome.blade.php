@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div id="hero" class="py-5">
+<div id="hero" class="py-4">
     <div class="container">
         <div class="row">
             <div class="col-lg-9 py-3">
@@ -11,19 +11,19 @@
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">Using the proven and guaranteed BeSpoke™ process, I deliver showcase web experiences for architectural firms that captivate befitting clientele and win more business.</p>
+                <p class="h2" id="subtext">Using the proven and guaranteed BeSpoke process, I deliver showcase web experiences for architectural firms that captivate befitting clientele and win more business.</p>
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
                         href="tel: +61 411 346 787" 
-                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
-                    >Contact To Learn More</a>
+                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-2 px-md-3"
+                    >Contact Taylor To Find Out How</a>
                 </div>
             </div>
 
             <div class="offset-lg-1 col-lg-4 text-center">
                 <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
                 <p class="h5">Taylor Ivanoff</p>
-                <p class="h6">Design, Software Engineering Consultant</p>
+                <p class="h6 m-0">Designer, Software Engineer</p>
             </div>
         </div>
     </div>

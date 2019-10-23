@@ -7,11 +7,9 @@
             </div>
 
             <div class="col-md-10 py-2 pl-2">
-                <h1>Free Portfolio Website Evaluation Guide</h1>
+                <h1>Free Website Evaluation</h1>
 
                 <div class="py-2">
-                    <p class="h5">Learn 7 practical tips to strengthen your digital marketing using your portfolio website.</p>
-
                     <p>Through a sample of BeSpoke™, you'll learn how to spotlight your creative value to win new business.</p>
                 </div>
                 <register-form title="Register Your Interest"></register-form>

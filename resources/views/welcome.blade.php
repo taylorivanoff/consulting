@@ -11,19 +11,21 @@
 
         <div class="row my-3">
             <div class="col-lg-7">
-                <p class="h2" id="subtext">With BeSpoke™, I've delivered showcase web experiences that captivate and convert befitting clientele.</p>
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
-                        href="tel: +61 411 346 787" 
+                        href="https://calendly.com/taylorivanoff/phone-meeting"
+                        target="_blank" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
                     >Contact To Learn More</a>
                 </div>
             </div>
 
             <div class="offset-lg-1 col-lg-4 text-center">
-                <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
-                <p class="h5">Taylor Ivanoff</p>
-                <p class="h6">Portfolio Website Consulting Expert</p>
+                <a target="_blank" href="https://linkedin.com/in/taylor-ivanoff/">
+                    <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
+                
+                <p class="h5 text-dark">Taylor Ivanoff</p>
+            </a>
             </div>
         </div>
     </div>
@@ -48,6 +50,6 @@
     </div>
 </div>
 
-@include('components.download-guide')
+{{-- @include('components.download-guide') --}}
 
 @endsection

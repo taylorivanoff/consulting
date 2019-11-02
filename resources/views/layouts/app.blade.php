@@ -10,7 +10,7 @@
     <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
     <meta property='og:url' content='https://taylorivanoff.com'/>
 
-    <title>Portfolio Website Consulting, Evaluation, Implementation | Taylor Ivanoff Consulting</title>
+    <title>Website Consulting, Evaluation, Implementation For Architects | Taylor Ivanoff Consulting</title>
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
@@ -61,8 +61,6 @@
                     </ul>
                 </div>
                 @endauth
-                
-                
             </div>
         </nav>
 

@@ -3,16 +3,6 @@
 		<form @submit.prevent="submit" novalidate v-if="!success">
 			<div class="row">
 				<div class="col-lg-6">
-					<div class="my-4">
-						<p>
-							To apply for the BeSpoke™ program, where your firm’s upgraded portfolio website will attract more befitting clientele, win major projects and grow your revenue, select a date and time slot below to schedule an application session. 
-						</p>
-						<p>
-							In this discussion, we’ll determine whether your architectural firm is able to get the most value from this program.
-						</p>
-
-					</div>
-					
 					<div class="my-3">
 						<p class="h6">Enter your details.</p>
 

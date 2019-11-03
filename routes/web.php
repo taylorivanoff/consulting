@@ -13,21 +13,16 @@
 
 Route::get('/', 'HomeController')->name('home');
 
-// Route::get('contact', function () {
-// 	return view('contact');
-// })->name('contact');
+Route::get('contact', function () {
+	return view('contact');
+})->name('contact');
 
 Route::resource('leads', 'LeadController');
 Route::resource('appointments', 'AppointmentController');
 
 Auth::routes();
 
-// Route::multistep('bespoke/application', 'BeSpoke\ApplicationController')
-// 	->steps(3)
-// 	->name('bespoke.application');
-
 Route::prefix('auth')->group(function () {
-
 	Route::get('email-authenticate/{token}', 'Auth\LoginController@authenticateEmail')->name('auth.email-authenticate');
 
 	Route::post('recaptcha', 'Auth\VerifyRecaptchaController')->name('auth.recaptcha');
@@ -35,11 +30,9 @@ Route::prefix('auth')->group(function () {
 	Route::middleware(['auth'])->group(function () {
 		Route::get('logout', 'Auth\LogoutController')->name('auth.logout');
 	});
-
 });
 
 Route::middleware(['auth'])->group(function () {
-
 	Route::prefix('user')->group(function () {
 		Route::get('profile', 'Account\ProfileController')->name('user.profile');
 		Route::post('profile/update', 'Account\UpdateProfileController')->name('user.profile.update');
@@ -54,6 +47,5 @@ Route::middleware(['auth'])->group(function () {
 			Route::get('appointments', 'Admin\AppointmentController')->name('admin.appointments');
 		});
 	});
-
 });
 

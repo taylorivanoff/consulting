@@ -5,7 +5,7 @@
     <div class="container">
         <div class="row">
             <div class="col-lg-9 py-3">
-                <h1 class="display-4">I help architects win more projects with breakthrough web platforms.</h1>
+                <h1 class="display-4">I help architects win more projects with breakthrough websites.</h1>
             </div>
         </div>
 
@@ -13,7 +13,7 @@
             <div class="col-lg-7">
                 <div class="text-center text-lg-left py-4 m-0">
                     <a
-                        href="https://calendly.com/taylorivanoff/phone-meeting"
+                        href="{{ route('contact') }}"
                         target="_blank" 
                         class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
                     >Contact To Learn More</a>

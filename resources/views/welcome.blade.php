@@ -3,24 +3,10 @@
 @section('content')
 <div id="hero" class="py-4">
     <div class="container">
-        <div class="row">
-            <div class="col-lg-9 py-3">
-                <h1 class="display-4"></h1>
-            </div>
-        </div>
-
         <div class="row my-3">
-            <div class="col-lg-7">
-                <div class="text-center text-lg-left py-4 m-0">
-                    <a
-                        href="{{ route('contact') }}"
-                        target="_blank" 
-                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
-                    >Contact To Learn More</a>
-                </div>
-            </div>
+           
 
-            <div class="offset-lg-1 col-lg-4 text-center">
+            <div class="col-lg-4 text-center">
                 <a target="_blank" href="https://linkedin.com/in/taylor-ivanoff/">
                     <img src="{{ asset('img/headshot.jpeg') }}" alt="Photo of Taylor Ivanoff" class="rounded-circle my-2 px-4 w-100">
                 

@@ -32,7 +32,11 @@
         <nav class="navbar navbar-expand-md navbar-light">
             <div class="container">
                 <a class="navbar-brand text-lowercase mr-lg-5" href="/"><img src="{{ asset('img/logo.png') }}" alt="Taylor Ivanoff Consulting" height="60"></a>
-                
+                <a
+                        href="{{ route('contact') }}"
+                        target="_blank" 
+                        class="btn btn-danger text-uppercase font-weight-bold badge-pill py-2 px-3"
+                    >Contact To Learn More</a>
                 @auth
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>

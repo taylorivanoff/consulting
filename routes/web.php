@@ -11,9 +11,9 @@
 |
 */
 
-Route::get('/', 'HomeController')->name('home');
+// Route::get('/', 'HomeController')->name('home');
 
-Route::get('contact', function () {
+Route::get('/', function () {
 	return view('contact');
 })->name('contact');
 

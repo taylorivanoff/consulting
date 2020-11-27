@@ -27,7 +27,7 @@ class StoreAppointmentRequest extends FormRequest
             'name' => 'required|string|max:255',
             'email' => 'required|string|max:255',
             'phone' => 'required|string|max:255',
-            'booking' => 'required|integer|exists:bookings,id'
+            'booking' => 'required'
         ];
     }
 }

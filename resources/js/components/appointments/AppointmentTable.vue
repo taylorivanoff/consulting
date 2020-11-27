@@ -18,7 +18,7 @@
 							'btn-muted': !slot.is_available,
 						}"
 						:disabled="!slot.is_available"
-						@click="$emit('appointmentClicked', $event.target.id)"
+						@click="$emit('appointmentClicked', slot)"
 					>
 						{{ slot.time }}
 					</button>

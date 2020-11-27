@@ -34,7 +34,7 @@ class AppointmentController extends Controller
             $cursor->startOfWeek()->addWeek(1);
         }
 
-        $maxDate = $cursor->copy()->addWeekdays(5);
+        $maxDate = $cursor->copy()->addWeekdays(6);
 
         while (($cursor->diffInDays($maxDate)) > 0) {
             $slots = new Collection;
@@ -43,22 +43,20 @@ class AppointmentController extends Controller
             $maxHour = $cursor->copy()->addHours(10);
 
             while (($cursor->diffInMinutes($maxHour)) > 0) {
-                $id = null;
                 $time = $cursor->format('g:i a');
-                $available = false;
+                $available = true;
 
-                foreach (Booking::all() as $booking) {
-                    $bookingTime = Carbon::parse($booking->time);
+                foreach (Appointment::all() as $appointment) {
+                    $appointmentTime = Carbon::parse($appointment->time);
 
-                    if ($cursor->eq($bookingTime)) {
-                        $id = $booking->id;
-                        $time = $bookingTime->format('g:i a');
-                        $available = true;
+                    if ($cursor->eq($appointmentTime)) {
+                        $time = $appointmentTime->format('g:i a');
+                        $available = false;
                     }
                 }
 
                 $slots->push([
-                    'id' => $id,
+                    'datetime' => $cursor->toDateTimeString(),
                     'time' => $time,
                     'is_available' => $available
                 ]);
@@ -79,16 +77,6 @@ class AppointmentController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -98,8 +86,6 @@ class AppointmentController extends Controller
     {
         $validated = $request->validated();
 
-        $booking = Booking::findOrFail($validated['booking']);
-
         $lead = Lead::firstOrCreate([
             'email' => $validated['email']
         ]);
@@ -108,65 +94,9 @@ class AppointmentController extends Controller
             'name' => $validated['name'],
             'email' => $lead->email,
             'phone' => $validated['phone'],
-            'time' => $booking->time,
+            'time' => $validated['booking']['datetime'],
         ]);
 
-        $later = Carbon::parse($booking->time)->subtract('minutes', 30);
-
-        Mail::to($lead->email)
-            ->queue(new UserBookedAppointment($appointment));
-
-        Mail::to(User::role('admin')->get())
-            ->queue(new AdminUserBookedAppointment($appointment));
-
-        Mail::to($lead->email)
-            ->later($later, new UserAppointmentDetails($appointment));
-
-        $booking->delete();
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function show(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, Appointment $appointment)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  \App\Models\Appointment  $appointment
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy(Appointment $appointment)
-    {
-        //
+        Mail::to($lead->email)->send(new UserBookedAppointment($appointment));
     }
 }

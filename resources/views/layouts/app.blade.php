@@ -10,7 +10,7 @@
     <meta property='og:description' content='I help architects refine their portfolio websites to  win more clientele.'/>
     <meta property='og:url' content='https://taylorivanoff.com'/>
 
-    <title>Taylor Ivanoff Consulting</title>
+    <title>Appointment Booking</title>
 
     <link rel="icon" type="image/png" href="{{ asset('favicon.png') }}" />
 
@@ -29,39 +29,7 @@
 </head>
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light">
-            <div class="container">
-                <a class="navbar-brand text-lowercase mr-lg-5" href="/"><img src="{{ asset('img/logo.png') }}" alt="Taylor Ivanoff Consulting" height="60"></a>
-                @auth
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
-
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                @if(auth()->user()->name)
-                                    {{auth()->user()->name}}
-                                @else
-                                    Account
-                                @endisset
-                            </a>
-                            <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                @role('admin')
-                                    <a class="dropdown-item" href="{{ route('admin.dashboard') }}">Admin</a>
-                                    <div class="dropdown-divider"></div>
-                                @endrole
-
-                                <a class="dropdown-item" href="{{ route('user.profile') }}">Profile</a>
-                                <a class="dropdown-item" href="{{ route('auth.logout') }}">Logout</a>
-                            </div>
-                        </li>
-                    </ul>
-                </div>
-                @endauth
-            </div>
-        </nav>
+       
 
         <main>
             @yield('content')
@@ -71,14 +39,11 @@
             <div class="container">
                 <div class="row my-3">
                     <div class="col-md-6 pb-3 pb-sm-0">
-                        <small class="text-secondary"><span class="align-middle">©</span> {{ now()->year }} <a href="https://abr.business.gov.au/ABN/View?abn=13633865362">Taylor Ivanoff Consulting</a></small>
+                        
                     </div>
 
                     <div class="col-md-6 pb-3 pb-sm-0">
-                        <small class="text-secondary">This site is protected by reCAPTCHA and the Google 
-                            <a href="https://policies.google.com/privacy">Privacy Policy</a> and
-                            <a href="https://policies.google.com/terms">Terms of Service</a> apply.
-                        </small>
+                       
                     </div>
                 </div>
             </div>

@@ -1,11 +1,7 @@
 @component('mail::message')
 Hi {{ $appointment->name }},
 
-Taylor Ivanoff here.
-
-Congratulations. You've made the first step in maximising your revenue.
-
-Our application call will be approx. 30-45 min, and is scheduled at:
+You will be scheduled at:
 
 <br>
 
@@ -21,9 +17,6 @@ Our application call will be approx. 30-45 min, and is scheduled at:
 <a href="{{ $links['webOutlook'] }}">Add to Outlook</a>
 @endcomponent
 
-Thirty minutes prior to the scheduled time, you'll receive a confirmational e-mail about the call 📞
-
-Speak to you soon.
-
-Taylor Ivanoff, Director</p>
+Thank you!
+</p>
 @endcomponent
